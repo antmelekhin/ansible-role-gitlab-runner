@@ -1,7 +1,7 @@
-Role Name
-=========
+GitLab Runner
+=============
 
-An Ansible role for install GitLab Runners.
+An Ansible role for install GitLab Runner.
 
 Requirements
 ------------
@@ -11,6 +11,7 @@ Requirements
   - Debian
     - 10
     - 11
+    - 12
   - RHEL
     - 7
     - 8
