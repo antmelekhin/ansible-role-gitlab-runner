@@ -1,0 +1,15 @@
+---
+- name: 'Verify'
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: 'Gathering Service Facts'
+      ansible.builtin.service_facts:
+
+    - name: 'Assert that sshd service is enabled and running'
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.services['gitlab-runner.service'].state == 'running' or
+            ansible_facts.services['gitlab-runner.service'].state == 'active'
+          - ansible_facts.services['gitlab-runner.service'].status == 'enabled' or
+            ansible_facts.services['gitlab-runner.service'].status == 'enabled'

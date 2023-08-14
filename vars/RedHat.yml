@@ -1,0 +1,9 @@
+---
+_gitlab_runner_redhat_mirrors:
+  gitlab-runner: '{{ gitlab_runner_repository_mirror }}/el/{{ ansible_distribution_major_version }}/$basearch'
+  gitlab-runner-source: '{{ gitlab_runner_repository_mirror }}/el/{{ ansible_distribution_major_version }}/SRPMS'
+
+_gitlab_runner_redhat_gpgkeys:
+  - '{{ gitlab_runner_repository_key_url }}'
+  - '{{ gitlab_runner_repository_key_url }}/runner-gitlab-runner-4C80FB51394521E9.pub.gpg'
+  - '{{ gitlab_runner_repository_key_url }}/runner-gitlab-runner-49F16C5CC3A0F81F.pub.gpg'

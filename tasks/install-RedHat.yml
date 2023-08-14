@@ -1,0 +1,22 @@
+---
+- name: 'Configure YUM/DNF repository and install Gitlab Runner package'
+  become: true
+  block:
+    - name: 'Ensure dependencies are installed'
+      ansible.builtin.package:
+        name: yum-utils
+        state: present
+
+    - name: 'Add Gitlab Runner DNF/YUM repository'
+      ansible.builtin.template:
+        src: 'gitlab-runner.repo.j2'
+        dest: '/etc/yum.repos.d/gitlab-runner.repo'
+        owner: 'root'
+        group: 'root'
+        mode: 0644
+
+    - name: 'Install Gitlab Runner package'
+      ansible.builtin.package:
+        name: "gitlab-runner{{ gitlab_runner_package_version | default('') }}"
+        state: "{{ 'present' if (gitlab_runner_package_version | length) else 'latest' }}"
+      when: not ansible_check_mode

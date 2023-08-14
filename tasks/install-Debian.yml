@@ -1,0 +1,42 @@
+---
+- name: 'Configure APT repository and install Gitlab Runner package'
+  become: true
+  block:
+    - name: 'Ensure dependencies are installed'
+      ansible.builtin.apt:
+        name:
+          - apt-transport-https
+        state: present
+
+    - name: 'Add Gitlab Runner APT key'
+      ansible.builtin.apt_key:
+        url: '{{ gitlab_runner_repository_key_url }}'
+        keyring: '/usr/share/keyrings/gitlab-runner-archive-keyring.gpg'
+        state: present
+      when: not ansible_check_mode
+
+    - name: 'Add Gitlab Runner APT repository'
+      ansible.builtin.apt_repository:
+        filename: gitlab-runner
+        repo: '{{ _gitlab_runner_debian_mirror }}'
+        state: present
+      loop: '{{ _gitlab_runner_debian_mirrors }}'
+      loop_control:
+        loop_var: _gitlab_runner_debian_mirror
+
+    - name: 'Pin Gitlab Runner APT repository'
+      ansible.builtin.copy:
+        content: |
+          Explanation: Prefer GitLab provided packages over the Debian native ones
+          Package: gitlab-runner
+          Pin: origin packages.gitlab.com
+          Pin-Priority: 1001
+        dest: '/etc/apt/preferences.d/99-gitlab-runner'
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: 'Install Gitlab Runner package'
+      ansible.builtin.apt:
+        name: "gitlab-runner{{ gitlab_runner_package_version | default('') }}"
+        state: "{{ 'present' if (gitlab_runner_package_version | length) else 'latest' }}"

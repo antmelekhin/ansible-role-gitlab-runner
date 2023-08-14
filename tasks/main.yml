@@ -1,0 +1,6 @@
+---
+- name: 'Include OS-specific variables'
+  ansible.builtin.include_vars: '{{ ansible_os_family }}.yml'
+
+- name: 'Include tasks for install Gitlab Runner'
+  ansible.builtin.include_tasks: 'install-{{ ansible_os_family }}.yml'

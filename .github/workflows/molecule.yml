@@ -1,0 +1,31 @@
+---
+name: 'Molecule'
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: 'Test'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - distro: 'debian-11'
+          - distro: 'rockylinux-8'
+          - distro: 'ubuntu-20.04'
+
+    steps:
+      - name: 'Checkout the codebase'
+        uses: actions/checkout@v3
+
+      - name: 'Test role'
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_command: test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}

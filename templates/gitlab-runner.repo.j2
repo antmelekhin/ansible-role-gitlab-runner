@@ -1,0 +1,17 @@
+{{ ansible_managed | comment }}
+
+{% for name, baseurl in _gitlab_runner_redhat_mirrors.items() %}
+[{{ name }}]
+name={{ name }}
+baseurl={{ baseurl }}
+repo_gpgcheck=0
+gpgcheck=1
+enabled=1
+{% for gpgkey in _gitlab_runner_redhat_gpgkeys %}
+gpgkey={{ gpgkey }}
+{% endfor %}
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+{% endfor %}
