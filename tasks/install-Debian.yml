@@ -5,6 +5,7 @@
     - name: 'Ensure dependencies are installed'
       ansible.builtin.apt:
         name: apt-transport-https
+        update_cache: true
         state: present
 
     - name: 'Add Gitlab Runner APT key'
@@ -37,5 +38,6 @@
 
     - name: 'Install Gitlab Runner package'
       ansible.builtin.apt:
-        name: "gitlab-runner{{ gitlab_runner_package_version | default('') }}"
+        name: "gitlab-runner{{ ('=' + gitlab_runner_package_version) if (gitlab_runner_package_version | length) else '' }}"
         state: "{{ 'present' if (gitlab_runner_package_version | length) else 'latest' }}"
+        allow_downgrade: "{{ omit if ansible_version['full'] is version('2.12', '<') else true }}"

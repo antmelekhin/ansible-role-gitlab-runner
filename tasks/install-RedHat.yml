@@ -16,7 +16,8 @@
         mode: 0644
 
     - name: 'Install Gitlab Runner package'
-      ansible.builtin.package:
-        name: "gitlab-runner{{ gitlab_runner_package_version | default('') }}"
+      ansible.builtin.yum:
+        name: "gitlab-runner{{ ('-' + gitlab_runner_package_version) if (gitlab_runner_package_version | length) else '' }}"
         state: "{{ 'present' if (gitlab_runner_package_version | length) else 'latest' }}"
-      when: not ansible_check_mode
+        update_cache: true
+        allow_downgrade: "{{ omit if ansible_version['full'] is version('2.12', '<') else true }}"
