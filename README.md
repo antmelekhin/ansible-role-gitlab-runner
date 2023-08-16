@@ -36,6 +36,8 @@ None.
 Example Playbook
 ----------------
 
+- Install `Gitlab Runner`:
+
   ```yaml
   ---
   - name: 'Install gitlab-runner'
@@ -43,6 +45,38 @@ Example Playbook
 
     roles:
       - role: antmelekhin.gitlab_runner
+  ```
+
+- Install and configure `Gitlab Runner` with shell executor:
+
+  ```yaml
+  ---
+  - name: 'Install gitlab-runner'
+    hosts: all
+
+    roles:
+      - role: antmelekhin.gitlab_runner
+
+    post_tasks:
+      - name: 'Register gitlab-runner'
+        ansible.builtin.copy:
+          content: |
+            concurrent = 1
+            check_interval = 0
+            shutdown_timeout = 0
+
+            [session_server]
+              session_timeout = 1800
+
+            [[runners]]
+              name = "{{ ansible_fqdn }}"
+              url = "https://gitlab.com"
+              token = "xxxxxxxxxxxx"
+              executor = "shell"
+          dest: '/etc/gitlab-runner/config.toml'
+          owner: 'root'
+          group: 'root'
+          mode: 0600
   ```
 
 License
