@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.1](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v1.1.0...v1.1.1) (2023-11-15)
+
+
+### Code Refactoring
+
+* code minor fixes ([#2](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/2)) ([1d16841](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/1d16841c1b1091f3ec25828a615c0d1bd15b60c2))
+
+
+### Documentation
+
+* add extra example ([03d0a25](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/03d0a25d307d9163a60f32e57c34200bfb654470))
+
+
+### Tests
+
+* add tox ([5f062f0](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/5f062f0bac1a9969f7083135953e6bf4ad4ad69a))
+
 ## [1.1.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v1.0.0...v1.1.0) (2023-08-15)
 
 
