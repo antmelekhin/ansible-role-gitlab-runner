@@ -2,17 +2,10 @@
 - name: 'Include OS-specific variables'
   ansible.builtin.include_vars: '{{ distribution }}'
   with_first_found:
-    - '{{ ansible_distribution_file_variety }}.yml'
     - '{{ ansible_distribution }}.yml'
     - '{{ ansible_os_family }}.yml'
   loop_control:
     loop_var: distribution
 
 - name: 'Include tasks for install Gitlab Runner'
-  ansible.builtin.include_tasks: '{{ distribution }}'
-  with_first_found:
-    - 'install-{{ ansible_distribution_file_variety }}.yml'
-    - 'install-{{ ansible_distribution }}.yml'
-    - 'install-{{ ansible_os_family }}.yml'
-  loop_control:
-    loop_var: distribution
+  ansible.builtin.include_tasks: 'install-{{ ansible_os_family }}.yml'
