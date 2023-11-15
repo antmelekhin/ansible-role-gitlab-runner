@@ -39,5 +39,6 @@
     - name: 'Install Gitlab Runner package'
       ansible.builtin.apt:
         name: "gitlab-runner{{ ('=' + gitlab_runner_package_version) if (gitlab_runner_package_version | length) else '' }}"
-        state: "{{ 'present' if (gitlab_runner_package_version | length) else 'latest' }}"
         allow_downgrade: "{{ omit if ansible_version['full'] is version('2.12', '<') else true }}"
+        update_cache: true
+        state: "{{ 'present' if (gitlab_runner_package_version | length) else 'latest' }}"
