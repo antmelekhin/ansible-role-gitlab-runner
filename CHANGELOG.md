@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v1.1.1...v1.2.0) (2024-01-05)
+
+
+### Improvements
+
+* update variable names and rm useless repo ([#3](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/3)) ([47109b1](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/47109b162b9dec2e5c02061e90d1ea2b40b78a8c))
+
 ## [1.1.1](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v1.1.0...v1.1.1) (2023-11-15)
 
 
