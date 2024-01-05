@@ -24,9 +24,9 @@ Requirements
 Role Variables
 --------------
 
-- `gitlab_runner_package_version` The specific version of Gitlab Runner to install (default: `''`).
-- `gitlab_runner_repository_mirror` Mirror of `Gitlab` repository (default: `https://packages.gitlab.com/runner/gitlab-runner`).
-- `gitlab_runner_repository_key_url` URL to `Gitlab's` GPG public key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`)
+- `gitlab_runner_version` The specific version of Gitlab Runner to install (default: `''`).
+- `gitlab_runner_repository_mirror_url` Mirror of `Gitlab` repository (default: `https://packages.gitlab.com/runner/gitlab-runner`).
+- `gitlab_runner_repository_gpgkey` URL to `Gitlab's` GPG public key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`)
 
 Dependencies
 ------------

@@ -10,19 +10,18 @@
 
     - name: 'Add Gitlab Runner APT key'
       ansible.builtin.apt_key:
-        url: '{{ gitlab_runner_repository_key_url }}'
+        url: '{{ gitlab_runner_repository_gpgkey }}'
         keyring: '/usr/share/keyrings/gitlab-runner-archive-keyring.gpg'
         state: present
       when: not ansible_check_mode
 
     - name: 'Add Gitlab Runner APT repository'
-      ansible.builtin.apt_repository:
-        filename: gitlab-runner
-        repo: '{{ _gitlab_runner_debian_mirror }}'
-        state: present
-      loop: '{{ _gitlab_runner_debian_mirrors }}'
-      loop_control:
-        loop_var: _gitlab_runner_debian_mirror
+      ansible.builtin.template:
+        src: 'gitlab-runner.list.j2'
+        dest: '/etc/apt/sources.list.d/gitlab-runner.list'
+        owner: 'root'
+        group: 'root'
+        mode: 0644
 
     - name: 'Pin Gitlab Runner APT repository'
       ansible.builtin.copy:
@@ -38,7 +37,7 @@
 
     - name: 'Install Gitlab Runner package'
       ansible.builtin.apt:
-        name: "gitlab-runner{{ ('=' + gitlab_runner_package_version) if (gitlab_runner_package_version | length) else '' }}"
+        name: "gitlab-runner{{ ('=' + gitlab_runner_version) if (gitlab_runner_version | length) else '' }}"
         allow_downgrade: "{{ omit if ansible_version['full'] is version('2.12', '<') else true }}"
         update_cache: true
-        state: "{{ 'present' if (gitlab_runner_package_version | length) else 'latest' }}"
+        state: "{{ 'present' if (gitlab_runner_version | length) else 'latest' }}"
