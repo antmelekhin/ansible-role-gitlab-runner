@@ -1,4 +1,2 @@
 ---
-_gitlab_runner_debian_mirrors:
-  - 'deb [signed-by=/usr/share/keyrings/gitlab-runner-archive-keyring.gpg] {{ gitlab_runner_repository_mirror }}/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main'
-  - 'deb-src [signed-by=/usr/share/keyrings/gitlab-runner-archive-keyring.gpg] {{ gitlab_runner_repository_mirror }}/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main'
+_gitlab_runner_apt_repository: '{{ gitlab_runner_repository_mirror_url }}/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main'
