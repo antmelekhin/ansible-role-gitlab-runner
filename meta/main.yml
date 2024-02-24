@@ -2,7 +2,7 @@
 galaxy_info:
   author: antmelekhin
   role_name: gitlab_runner
-  description: An Ansible role for install GitLab Runners.
+  description: An Ansible role to install GitLab Runner.
 
   license: MIT
 
