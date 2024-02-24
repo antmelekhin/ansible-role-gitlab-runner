@@ -1,7 +1,7 @@
 GitLab Runner
 =============
 
-An Ansible role for install GitLab Runner.
+An Ansible role to install GitLab Runner.
 
 Requirements
 ------------
