@@ -3,6 +3,28 @@ GitLab Runner
 
 An Ansible role to install GitLab Runner.
 
+Update to 2.x
+-------------
+
+The role version 1.x contains the task `Pin Gitlab Runner APT repository` that creates the pinning configuration file and actual for Debian Stretch only.
+I've removed this task because it brakes package version selection in `Install Gitlab Runner package` task, and the role doesn’t support the Debian Stretch.
+To continue using this role without side effects, you'll need to delete the pinning configuration file manually or add appropriate task in your ansible playbook file.
+
+```yaml
+  - name: 'Install gitlab-runner'
+    hosts: all
+
+    pre_tasks:
+      - name: 'Remove Gitlab Runner APT pinning file'
+        ansible.builtin.file:
+          path: '/etc/apt/preferences.d/99-gitlab-runner'
+          state: absent
+        become: true
+
+    roles:
+      - role: antmelekhin.gitlab_runner
+```
+
 Requirements
 ------------
 
@@ -45,6 +67,18 @@ Example Playbook
 
     roles:
       - role: antmelekhin.gitlab_runner
+  ```
+
+- Install `Gitlab Runner` v16.9.1:
+
+  ```yaml
+  ---
+  - name: 'Install Gitlab Runner v16.9.1'
+    hosts: all
+
+    roles:
+      - role: antmelekhin.gitlab_runner
+        gitlab_runner_version: '16.9.1-1'
   ```
 
 - Install and configure `Gitlab Runner` with shell executor:
