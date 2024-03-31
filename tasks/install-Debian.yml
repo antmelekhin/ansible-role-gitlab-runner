@@ -25,18 +25,6 @@
         group: 'root'
         mode: 0644
 
-    - name: 'Pin Gitlab Runner APT repository'
-      ansible.builtin.copy:
-        content: |
-          Explanation: Prefer GitLab provided packages over the Debian native ones
-          Package: gitlab-runner
-          Pin: origin packages.gitlab.com
-          Pin-Priority: 1001
-        dest: '/etc/apt/preferences.d/99-gitlab-runner'
-        owner: root
-        group: root
-        mode: 0644
-
     - name: 'Install Gitlab Runner package'
       ansible.builtin.apt:
         name: "gitlab-runner{{ ('=' + gitlab_runner_version) if (gitlab_runner_version | length) else '' }}"
