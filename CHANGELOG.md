@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.0.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v1.2.0...v2.0.0) (2024-03-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* rm `Pin Gitlab Runner APT repository` task and add minor changes (#5)
+
+### Continuous Integration
+
+* fix publish workflow ([9d74d0d](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/9d74d0d7b87b3db1bfaada7fd0b2bce44f19cf94))
+* update release rules ([6819e51](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/6819e5165df3812716d5ff4b98309b6149c2b2dd))
+
+
+### Fixes
+
+* rm `Pin Gitlab Runner APT repository` task and add minor changes ([#5](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/5)) ([83f90e9](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/83f90e95aba6645d597355a7be3bbf22fa05c999))
+
+
+### Styles
+
+* add `_gitlab_runner_apt_local_gpgkey` variable ([ffd3c88](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/ffd3c88efc14a294684ebce65a8d8d87e5a7fa12))
+* update description and rename some task names ([#4](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/4)) ([1c0aa2f](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/1c0aa2fdc9b0a4698ba3a30a5606a44061b92571))
+
 ## [1.2.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v1.1.1...v1.2.0) (2024-01-05)
 
 
