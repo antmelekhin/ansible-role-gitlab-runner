@@ -4,7 +4,9 @@
   block:
     - name: 'Ensure dependencies are installed'
       ansible.builtin.apt:
-        name: apt-transport-https
+        name:
+          - apt-transport-https
+          - gnupg
         update_cache: true
         state: present
 
