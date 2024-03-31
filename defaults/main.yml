@@ -1,4 +1,4 @@
 ---
 gitlab_runner_version: ''
 gitlab_runner_repository_mirror_url: 'https://packages.gitlab.com/runner/gitlab-runner'
-gitlab_runner_repository_gpgkey: 'https://packages.gitlab.com/runner/gitlab-runner/gpgkey'
+gitlab_runner_repository_gpgkey: '{{ gitlab_runner_repository_mirror_url }}/gpgkey'
