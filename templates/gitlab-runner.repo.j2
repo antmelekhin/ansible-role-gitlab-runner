@@ -3,12 +3,10 @@
 [gitlab-runner]
 name=gitlab-runner
 baseurl={{ _gitlab_runner_yum_repository }}
-repo_gpgcheck=0
+repo_gpgcheck=1
 gpgcheck=1
 enabled=1
-{% for gpgkey in _gitlab_runner_yum_repository_gpgkeys %}
-gpgkey={{ gpgkey }}
-{% endfor %}
+gpgkey={{ _gitlab_runner_yum_repository_gpgkeys | join('\n\t') }}
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
