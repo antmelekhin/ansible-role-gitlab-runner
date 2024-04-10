@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.0.0...v2.0.1) (2024-04-10)
+
+
+### Fixes
+
+* gpgkey value for redhat-based distros ([#6](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/6)) ([5f0558b](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/5f0558bf3a0cb0192e290ec00bcdca6e94fdc5e7))
+
 ## [2.0.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v1.2.0...v2.0.0) (2024-03-31)
 
 
