@@ -1,7 +1,7 @@
 ---
-_gitlab_runner_yum_repository_gpgkeys:
-  - '{{ gitlab_runner_repository_gpgkey }}'
-  - '{{ gitlab_runner_repository_gpgkey }}/runner-gitlab-runner-4C80FB51394521E9.pub.gpg'
-  - '{{ gitlab_runner_repository_gpgkey }}/runner-gitlab-runner-49F16C5CC3A0F81F.pub.gpg'
+_gitlab_runner_repository_gpgkey_urls:
+  - '{{ gitlab_runner_repository_gpgkey_url }}'
+  - '{{ gitlab_runner_repository_gpgkey_url }}/runner-gitlab-runner-4C80FB51394521E9.pub.gpg'
+  - '{{ gitlab_runner_repository_gpgkey_url }}/runner-gitlab-runner-49F16C5CC3A0F81F.pub.gpg'
 
-_gitlab_runner_yum_repository: '{{ gitlab_runner_repository_mirror_url }}/el/{{ ansible_distribution_major_version }}/$basearch'
+_gitlab_runner_repository: '{{ gitlab_runner_repository_mirror_url }}/el/{{ ansible_distribution_major_version }}/$basearch'

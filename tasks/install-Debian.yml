@@ -12,8 +12,8 @@
 
     - name: 'Add Gitlab Runner APT key'
       ansible.builtin.apt_key:
-        url: '{{ gitlab_runner_repository_gpgkey }}'
-        keyring: '{{ _gitlab_runner_apt_local_gpgkey }}'
+        url: '{{ gitlab_runner_repository_gpgkey_url }}'
+        keyring: '{{ _gitlab_runner_local_gpgkey_path }}'
         state: present
       when: not ansible_check_mode
 
