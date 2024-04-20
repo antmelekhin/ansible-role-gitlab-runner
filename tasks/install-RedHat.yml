@@ -4,8 +4,8 @@
   block:
     - name: 'Ensure dependencies are installed'
       ansible.builtin.package:
-        name: yum-utils
-        state: present
+        name: 'yum-utils'
+        state: 'present'
 
     - name: 'Add Gitlab Runner DNF/YUM repository'
       ansible.builtin.template:
@@ -18,6 +18,6 @@
     - name: 'Install Gitlab Runner package'
       ansible.builtin.yum:
         name: "gitlab-runner{{ ('-' + gitlab_runner_version) if (gitlab_runner_version | length) else '' }}"
-        allow_downgrade: "{{ omit if ansible_version['full'] is version('2.12', '<') else true }}"
+        allow_downgrade: true
         update_cache: true
         state: "{{ 'present' if (gitlab_runner_version | length) else 'latest' }}"

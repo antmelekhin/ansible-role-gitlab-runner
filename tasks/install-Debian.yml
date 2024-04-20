@@ -5,16 +5,16 @@
     - name: 'Ensure dependencies are installed'
       ansible.builtin.apt:
         name:
-          - apt-transport-https
-          - gnupg
+          - 'apt-transport-https'
+          - 'gnupg'
         update_cache: true
-        state: present
+        state: 'present'
 
     - name: 'Add Gitlab Runner APT key'
       ansible.builtin.apt_key:
-        url: '{{ gitlab_runner_repository_gpgkey }}'
-        keyring: '{{ _gitlab_runner_apt_local_gpgkey }}'
-        state: present
+        url: '{{ gitlab_runner_repository_gpgkey_url }}'
+        keyring: '{{ _gitlab_runner_local_gpgkey_path }}'
+        state: 'present'
       when: not ansible_check_mode
 
     - name: 'Add Gitlab Runner APT repository'
@@ -28,6 +28,6 @@
     - name: 'Install Gitlab Runner package'
       ansible.builtin.apt:
         name: "gitlab-runner{{ ('=' + gitlab_runner_version) if (gitlab_runner_version | length) else '' }}"
-        allow_downgrade: "{{ omit if ansible_version['full'] is version('2.12', '<') else true }}"
+        allow_downgrade: true
         update_cache: true
         state: "{{ 'present' if (gitlab_runner_version | length) else 'latest' }}"

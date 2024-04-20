@@ -1,4 +1,4 @@
 ---
-_gitlab_runner_apt_local_gpgkey: '/usr/share/keyrings/gitlab-runner-archive-keyring.gpg'
+_gitlab_runner_local_gpgkey_path: '/usr/share/keyrings/gitlab-runner-archive-keyring.gpg'
 
-_gitlab_runner_apt_repository: '{{ gitlab_runner_repository_mirror_url }}/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main'
+_gitlab_runner_repository: '{{ gitlab_runner_repository_mirror_url }}/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main'
