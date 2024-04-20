@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.2](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.0.1...v2.0.2) (2024-04-20)
+
+
+### Code Refactoring
+
+* update variable names, rm conditional expression, quote strings and rm loop for `include_vars` ([#7](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/7)) ([3acb973](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/3acb9735bc438138d13d7daad528b8bf495a52d5))
+
+
+### Continuous Integration
+
+* update workflows ([9904b65](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/9904b65b459eaf9193f81d511da9a33c93ec2374))
+
 ## [2.0.1](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.0.0...v2.0.1) (2024-04-10)
 
 
