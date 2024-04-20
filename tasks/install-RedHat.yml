@@ -4,8 +4,8 @@
   block:
     - name: 'Ensure dependencies are installed'
       ansible.builtin.package:
-        name: yum-utils
-        state: present
+        name: 'yum-utils'
+        state: 'present'
 
     - name: 'Add Gitlab Runner DNF/YUM repository'
       ansible.builtin.template:

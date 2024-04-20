@@ -5,16 +5,16 @@
     - name: 'Ensure dependencies are installed'
       ansible.builtin.apt:
         name:
-          - apt-transport-https
-          - gnupg
+          - 'apt-transport-https'
+          - 'gnupg'
         update_cache: true
-        state: present
+        state: 'present'
 
     - name: 'Add Gitlab Runner APT key'
       ansible.builtin.apt_key:
         url: '{{ gitlab_runner_repository_gpgkey_url }}'
         keyring: '{{ _gitlab_runner_local_gpgkey_path }}'
-        state: present
+        state: 'present'
       when: not ansible_check_mode
 
     - name: 'Add Gitlab Runner APT repository'
