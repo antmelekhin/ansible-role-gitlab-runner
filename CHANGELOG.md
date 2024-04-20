@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.0.2...v2.0.3) (2024-04-20)
+
+
+### Documentation
+
+* **README:** update role variables description ([0f8fec6](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/0f8fec657ff890ba0b30eb02f4f834f0ba8312ea))
+
 ## [2.0.2](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.0.1...v2.0.2) (2024-04-20)
 
 
