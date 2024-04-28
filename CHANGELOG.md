@@ -1,5 +1,30 @@
 # Changelog
 
+## [2.0.4](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.0.3...v2.0.4) (2024-04-28)
+
+
+### Documentation
+
+* **README:** fixed examples view for Ansible Galaxy ([d12c965](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/d12c965e81c33b6621ef818af44b2b4e38d01edd))
+
+
+### Fixes
+
+* fixed running a role in check_mode ([03182d9](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/03182d92fc4a4d2e4acda07337cb77eb6e1e97bf))
+
+
+### Styles
+
+* add newline to end of file ([4fc69c7](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/4fc69c7b5c8f0b49c49e887e3e02eda626d133b2))
+* use double underline in register variable ([71536ff](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/71536fff0171d71bb028b4a080a6acd02d51a35f))
+
+
+### Tests
+
+* add .tox as ignore ([1a6a4c6](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/1a6a4c6abeda4509cc12f5ab757488f52d7b5461))
+* add role_name prefix to instance name ([e557118](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/e557118fa14e26d3018ff2492959031490ba3e16))
+* run linters in its own workflow ([5b64a88](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/5b64a88486f4e7fa278c9ceda56c14e41d752a9a))
+
 ## [2.0.3](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.0.2...v2.0.3) (2024-04-20)
 
 
