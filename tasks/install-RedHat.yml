@@ -21,3 +21,4 @@
         allow_downgrade: true
         update_cache: true
         state: "{{ 'present' if (gitlab_runner_version | length) else 'latest' }}"
+      when: not ansible_check_mode
