@@ -11,18 +11,18 @@ I've removed this task because it brakes package version selection in `Install G
 To continue using this role without side effects, you'll need to delete the pinning configuration file manually or add appropriate task in your ansible playbook file.
 
 ```yaml
-  - name: 'Install gitlab-runner'
-    hosts: all
+- name: 'Install gitlab-runner'
+  hosts: all
 
-    pre_tasks:
-      - name: 'Remove Gitlab Runner APT pinning file'
-        ansible.builtin.file:
-          path: '/etc/apt/preferences.d/99-gitlab-runner'
-          state: absent
-        become: true
+  pre_tasks:
+    - name: 'Remove Gitlab Runner APT pinning file'
+      ansible.builtin.file:
+        path: '/etc/apt/preferences.d/99-gitlab-runner'
+        state: absent
+      become: true
 
-    roles:
-      - role: antmelekhin.gitlab_runner
+  roles:
+    - role: antmelekhin.gitlab_runner
 ```
 
 Requirements
@@ -58,60 +58,60 @@ None.
 Example Playbook
 ----------------
 
-- Install `Gitlab Runner`:
+Install `Gitlab Runner`:
 
-  ```yaml
-  ---
-  - name: 'Install gitlab-runner'
-    hosts: all
+```yaml
+---
+- name: 'Install gitlab-runner'
+  hosts: all
 
-    roles:
-      - role: antmelekhin.gitlab_runner
-  ```
+  roles:
+    - role: antmelekhin.gitlab_runner
+```
 
-- Install `Gitlab Runner` v16.9.1:
+Install `Gitlab Runner` v16.9.1:
 
-  ```yaml
-  ---
-  - name: 'Install Gitlab Runner v16.9.1'
-    hosts: all
+```yaml
+---
+- name: 'Install Gitlab Runner v16.9.1'
+  hosts: all
 
-    roles:
-      - role: antmelekhin.gitlab_runner
-        gitlab_runner_version: '16.9.1-1'
-  ```
+  roles:
+    - role: antmelekhin.gitlab_runner
+      gitlab_runner_version: '16.9.1-1'
+```
 
-- Install and configure `Gitlab Runner` with shell executor:
+Install and configure `Gitlab Runner` with shell executor:
 
-  ```yaml
-  ---
-  - name: 'Install gitlab-runner'
-    hosts: all
+```yaml
+---
+- name: 'Install gitlab-runner'
+  hosts: all
 
-    roles:
-      - role: antmelekhin.gitlab_runner
+  roles:
+    - role: antmelekhin.gitlab_runner
 
-    post_tasks:
-      - name: 'Register gitlab-runner'
-        ansible.builtin.copy:
-          content: |
-            concurrent = 1
-            check_interval = 0
-            shutdown_timeout = 0
+  post_tasks:
+    - name: 'Register gitlab-runner'
+      ansible.builtin.copy:
+        content: |
+          concurrent = 1
+          check_interval = 0
+          shutdown_timeout = 0
 
-            [session_server]
-              session_timeout = 1800
+          [session_server]
+            session_timeout = 1800
 
-            [[runners]]
-              name = "{{ ansible_fqdn }}"
-              url = "https://gitlab.com"
-              token = "xxxxxxxxxxxx"
-              executor = "shell"
-          dest: '/etc/gitlab-runner/config.toml'
-          owner: 'root'
-          group: 'root'
-          mode: 0600
-  ```
+          [[runners]]
+            name = "{{ ansible_fqdn }}"
+            url = "https://gitlab.com"
+            token = "xxxxxxxxxxxx"
+            executor = "shell"
+        dest: '/etc/gitlab-runner/config.toml'
+        owner: 'root'
+        group: 'root'
+        mode: 0600
+```
 
 License
 -------
