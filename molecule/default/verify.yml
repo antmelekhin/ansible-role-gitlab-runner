@@ -18,8 +18,8 @@
       ansible.builtin.command:
         cmd: '/usr/bin/gitlab-runner --version'
       changed_when: false
-      register: _gitlab_runner_version_check
+      register: __gitlab_runner_version_check
 
     - name: 'Version output'
       ansible.builtin.debug:
-        var: _gitlab_runner_version_check.stdout_lines[0].split(' ')[-1]
+        var: __gitlab_runner_version_check.stdout_lines[0].split(' ')[-1]
