@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.0.4...v2.1.0) (2024-05-05)
+
+
+### Improvements
+
+* add architecture for debian-based distros ([d82ef98](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/d82ef98f26636b09679db77fba61ea0ada9117e1))
+
 ## [2.0.4](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.0.3...v2.0.4) (2024-04-28)
 
 
