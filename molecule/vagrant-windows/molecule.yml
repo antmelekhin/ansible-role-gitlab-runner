@@ -1,0 +1,29 @@
+---
+role_name_check: 2
+dependency:
+  name: galaxy
+  enabled: true
+driver:
+  name: vagrant
+platforms:
+  - name: instance
+    box: 'jborean93/WindowsServer2019'
+    interfaces:
+      - network_name: private_network
+        ip: 192.168.56.4
+provisioner:
+  name: ansible
+  inventory:
+    host_vars:
+      instance:
+        ansible_host: 192.168.56.4
+        ansible_port: 5986
+        ansible_user: vagrant
+        ansible_password: vagrant
+        ansible_connection: winrm
+        ansible_winrm_scheme: https
+        ansible_winrm_transport: ntlm
+        ansible_winrm_server_cert_validation: ignore
+        ansible_become: false
+verifier:
+  name: ansible
