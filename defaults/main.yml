@@ -8,6 +8,6 @@ gitlab_runner_repository_gpgkey_url: '{{ gitlab_runner_repository_mirror_url }}/
 # Install GitLab Runner manually on Windows
 gitlab_runner_binary_version: '16.11.1'
 gitlab_runner_binary_name: 'gitlab-runner-{{ _gitlab_runner_os }}-{{ _gitlab_runner_architecture }}'
-gitlab_runner_download_url: 'https://s3.dualstack.us-east-1.amazonaws.com/gitlab-runner-downloads/v{{ gitlab_runner_binary_version }}/binaries'
+gitlab_runner_download_url: 'https://gitlab-runner-downloads.s3.amazonaws.com/v{{ gitlab_runner_binary_version }}/binaries'
 
 gitlab_runner_install_path: '{{ _gitlab_runner_install_path }}'
