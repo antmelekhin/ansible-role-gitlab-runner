@@ -7,4 +7,4 @@ _gitlab_runner_architecture_map:
 
 _gitlab_runner_architecture: '{{ _gitlab_runner_architecture_map[ansible_architecture] | default(ansible_architecture) }}'
 
-_gitlab_runner_install_path: 'C:\Program Files\gitlab-runner'
+_gitlab_runner_binary_install_path: 'C:\Program Files\gitlab-runner'

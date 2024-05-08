@@ -1,13 +1,12 @@
 ---
 # See available releases: https://gitlab.com/gitlab-org/gitlab-runner/-/releases
 # Install GitLab Runner using the official GitLab repositories
-gitlab_runner_version: ''
+gitlab_runner_package_version: ''
 gitlab_runner_repository_mirror_url: 'https://packages.gitlab.com/runner/gitlab-runner'
 gitlab_runner_repository_gpgkey_url: '{{ gitlab_runner_repository_mirror_url }}/gpgkey'
 
 # Install GitLab Runner manually on Windows
 gitlab_runner_binary_version: '16.11.1'
 gitlab_runner_binary_name: 'gitlab-runner-{{ _gitlab_runner_os }}-{{ _gitlab_runner_architecture }}'
-gitlab_runner_download_url: 'https://gitlab-runner-downloads.s3.amazonaws.com/v{{ gitlab_runner_binary_version }}/binaries'
-
-gitlab_runner_install_path: '{{ _gitlab_runner_install_path }}'
+gitlab_runner_binary_download_url: 'https://gitlab-runner-downloads.s3.amazonaws.com/v{{ gitlab_runner_binary_version }}/binaries'
+gitlab_runner_binary_install_path: '{{ _gitlab_runner_binary_install_path }}'
