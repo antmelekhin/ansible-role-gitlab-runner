@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.1.0...v2.2.0) (2024-05-09)
+
+
+### Features
+
+* add windows support ([#8](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/8)) ([6ef0022](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/6ef0022c0c038ae6924bc14d1fde54afb859ddcc))
+
 ## [2.1.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.0.4...v2.1.0) (2024-05-05)
 
 
