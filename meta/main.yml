@@ -34,5 +34,7 @@ galaxy_info:
     - runner
     - git
     - ci
+    - linux
+    - windows
 
 dependencies: []
