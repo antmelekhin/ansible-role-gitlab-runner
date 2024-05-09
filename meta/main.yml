@@ -24,11 +24,17 @@ galaxy_info:
         - 'bionic'
         - 'focal'
         - 'jammy'
+    - name: Windows
+      versions:
+        - '2016'
+        - '2019'
 
   galaxy_tags:
     - gitlab
     - runner
     - git
     - ci
+    - linux
+    - windows
 
 dependencies: []

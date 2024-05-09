@@ -42,13 +42,20 @@ Requirements
     - 18.04
     - 20.04
     - 22.04
+  - Windows
+    - 2016
+    - 2019
 
 Role Variables
 --------------
 
-- `gitlab_runner_version` The specific version of Gitlab Runner to install (default: `''`).
+- `gitlab_runner_package_version` The specific version of Gitlab Runner to install (default: `''`).
 - `gitlab_runner_repository_mirror_url` Mirror of `Gitlab` repository (default: `https://packages.gitlab.com/runner/gitlab-runner`).
 - `gitlab_runner_repository_gpgkey_url` URL to `Gitlab's` GPG public key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`)
+- `gitlab_runner_binary_version` The specific version of Gitlab Runner binary to manual install (default: `16.11.1`).
+- `gitlab_runner_binary_name` Gitlab Runner binary name (default: `gitlab-runner-windows-amd64`).
+- `gitlab_runner_binary_download_url` URL to download a Gitlab Runner binary (default: `https://gitlab-runner-downloads.s3.amazonaws.com/v16.11.1/binaries`).
+- `gitlab_runner_binary_install_path` Path to Gitlab Runner installation directory (default: `C:\Program Files\gitlab-runner`).
 
 Dependencies
 ------------
@@ -78,7 +85,7 @@ Install `Gitlab Runner` v16.9.1:
 
   roles:
     - role: antmelekhin.gitlab_runner
-      gitlab_runner_version: '16.9.1-1'
+      gitlab_runner_package_version: '16.9.1-1'
 ```
 
 Install and configure `Gitlab Runner` with shell executor:
