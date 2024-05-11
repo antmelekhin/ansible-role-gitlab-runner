@@ -49,13 +49,16 @@ Requirements
 Role Variables
 --------------
 
-- `gitlab_runner_package_version` The specific version of Gitlab Runner to install (default: `''`).
-- `gitlab_runner_repository_mirror_url` Mirror of `Gitlab` repository (default: `https://packages.gitlab.com/runner/gitlab-runner`).
-- `gitlab_runner_repository_gpgkey_url` URL to `Gitlab's` GPG public key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`)
-- `gitlab_runner_binary_version` The specific version of Gitlab Runner binary to manual install (default: `16.11.1`).
-- `gitlab_runner_binary_name` Gitlab Runner binary name (default: `gitlab-runner-windows-amd64`).
-- `gitlab_runner_binary_download_url` URL to download a Gitlab Runner binary (default: `https://gitlab-runner-downloads.s3.amazonaws.com/v16.11.1/binaries`).
-- `gitlab_runner_binary_install_path` Path to Gitlab Runner installation directory (default: `C:\Program Files\gitlab-runner`).
+- Variables for installing Gitlab Runner using the Gitlab repository:
+  - `gitlab_runner_package_version` The version of the Gitlab Runner package (default: `''`).
+  - `gitlab_runner_repository_mirror_url` Gitlab repository mirror (default: `https://packages.gitlab.com/runner/gitlab-runner`).
+  - `gitlab_runner_repository_gpgkey_url` URL to Gitlab repository GPG key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`).
+
+- Variables for installing Gitlab Runner using a binary file (Windows):
+  - `gitlab_runner_binary_version` The version of the Gitlab Runner binary (default: `16.11.1`).
+  - `gitlab_runner_binary_name` Gitlab Runner binary name (default: `gitlab-runner-windows-amd64`).
+  - `gitlab_runner_binary_download_url` URL to download the Gitlab Runner binary (default: `https://gitlab-runner-downloads.s3.amazonaws.com/v16.11.1/binaries`).
+  - `gitlab_runner_binary_install_path` Gitlab Runner installation folder (default: `C:\Program Files\gitlab-runner`).
 
 Dependencies
 ------------
