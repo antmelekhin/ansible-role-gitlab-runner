@@ -20,7 +20,7 @@
     - name: 'Debian | Add the GitLab Runner repository'
       ansible.builtin.template:
         src: 'gitlab-runner.list.j2'
-        dest: '/etc/apt/sources.list.d/gitlab-runner.list'
+        dest: '/etc/apt/sources.list.d/runner_gitlab-runner.list'
         owner: 'root'
         group: 'root'
         mode: 0644

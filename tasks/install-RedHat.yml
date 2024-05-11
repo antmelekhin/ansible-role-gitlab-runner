@@ -10,7 +10,7 @@
     - name: 'RedHat | Add the GitLab Runner repository'
       ansible.builtin.template:
         src: 'gitlab-runner.repo.j2'
-        dest: '/etc/yum.repos.d/gitlab-runner.repo'
+        dest: '/etc/yum.repos.d/runner_gitlab-runner.repo'
         owner: 'root'
         group: 'root'
         mode: 0644
