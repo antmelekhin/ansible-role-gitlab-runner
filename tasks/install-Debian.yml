@@ -1,8 +1,8 @@
 ---
-- name: 'Configure APT repository and install Gitlab Runner package'
+- name: 'Debian | Configure the repository and install the GitLab Runner package'
   become: true
   block:
-    - name: 'Ensure dependencies are installed'
+    - name: 'Debian | Ensure dependencies are installed'
       ansible.builtin.apt:
         name:
           - 'apt-transport-https'
@@ -11,13 +11,13 @@
         state: 'present'
       when: not ansible_check_mode
 
-    - name: 'Add Gitlab Runner APT key'
+    - name: 'Debian | Add the Gitlab Runner repository GPG key'
       ansible.builtin.apt_key:
         url: '{{ gitlab_runner_repository_gpgkey_url }}'
         keyring: '{{ _gitlab_runner_local_gpgkey_path }}'
         state: 'present'
 
-    - name: 'Add Gitlab Runner APT repository'
+    - name: 'Debian | Add the Gitlab Runner repository'
       ansible.builtin.template:
         src: 'gitlab-runner.list.j2'
         dest: '/etc/apt/sources.list.d/gitlab-runner.list'
@@ -25,7 +25,7 @@
         group: 'root'
         mode: 0644
 
-    - name: 'Install Gitlab Runner package'
+    - name: 'Debian | Install the Gitlab Runner package'
       ansible.builtin.apt:
         name: "gitlab-runner{{ ('=' + gitlab_runner_package_version) if (gitlab_runner_package_version | length) else '' }}"
         allow_downgrade: true

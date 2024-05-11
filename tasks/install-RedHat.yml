@@ -1,13 +1,13 @@
 ---
-- name: 'Configure YUM/DNF repository and install Gitlab Runner package'
+- name: 'RedHat | Configure the repository and install the GitLab Runner package'
   become: true
   block:
-    - name: 'Ensure dependencies are installed'
+    - name: 'RedHat | Ensure dependencies are installed'
       ansible.builtin.package:
         name: 'yum-utils'
         state: 'present'
 
-    - name: 'Add Gitlab Runner DNF/YUM repository'
+    - name: 'RedHat | Add the Gitlab Runner repository'
       ansible.builtin.template:
         src: 'gitlab-runner.repo.j2'
         dest: '/etc/yum.repos.d/gitlab-runner.repo'
@@ -15,7 +15,7 @@
         group: 'root'
         mode: 0644
 
-    - name: 'Install Gitlab Runner package'
+    - name: 'RedHat | Install the Gitlab Runner package'
       ansible.builtin.yum:
         name: "gitlab-runner{{ ('-' + gitlab_runner_package_version) if (gitlab_runner_package_version | length) else '' }}"
         allow_downgrade: true
