@@ -1,7 +1,7 @@
 GitLab Runner
 =============
 
-An Ansible role to install GitLab Runner.
+An Ansible role to install [GitLab Runner](https://docs.gitlab.com/runner/).
 
 Update to 2.x
 -------------
@@ -11,11 +11,11 @@ I've removed this task because it brakes package version selection in `Install G
 To continue using this role without side effects, you'll need to delete the pinning configuration file manually or add appropriate task in your ansible playbook file.
 
 ```yaml
-- name: 'Install gitlab-runner'
+- name: 'Install GitLab Runner'
   hosts: all
 
   pre_tasks:
-    - name: 'Remove Gitlab Runner APT pinning file'
+    - name: 'Remove GitLab Runner APT pinning file'
       ansible.builtin.file:
         path: '/etc/apt/preferences.d/99-gitlab-runner'
         state: absent
@@ -49,16 +49,16 @@ Requirements
 Role Variables
 --------------
 
-- Variables for installing Gitlab Runner using the Gitlab repository:
-  - `gitlab_runner_package_version` The version of the Gitlab Runner package (default: `''`).
-  - `gitlab_runner_repository_mirror_url` Gitlab repository mirror (default: `https://packages.gitlab.com/runner/gitlab-runner`).
-  - `gitlab_runner_repository_gpgkey_url` URL to Gitlab repository GPG key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`).
+- Variables for installing GitLab Runner using the GitLab repository:
+  - `gitlab_runner_package_version` The version of the GitLab Runner package (default: `''`).
+  - `gitlab_runner_repository_mirror_url` GitLab repository mirror (default: `https://packages.gitlab.com/runner/gitlab-runner`).
+  - `gitlab_runner_repository_gpgkey_url` URL to GitLab repository GPG key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`).
 
-- Variables for installing Gitlab Runner using a binary file (Windows):
-  - `gitlab_runner_binary_version` The version of the Gitlab Runner binary (default: `16.11.1`).
-  - `gitlab_runner_binary_name` Gitlab Runner binary name (default: `gitlab-runner-windows-amd64`).
-  - `gitlab_runner_binary_download_url` URL to download the Gitlab Runner binary (default: `https://gitlab-runner-downloads.s3.amazonaws.com/v16.11.1/binaries`).
-  - `gitlab_runner_binary_install_path` Gitlab Runner installation folder (default: `C:\Program Files\gitlab-runner`).
+- Variables for installing GitLab Runner using a binary file (Windows):
+  - `gitlab_runner_binary_version` The version of the GitLab Runner binary (default: `16.11.1`).
+  - `gitlab_runner_binary_name` GitLab Runner binary name (default: `gitlab-runner-windows-amd64`).
+  - `gitlab_runner_binary_download_url` URL to download the GitLab Runner binary (default: `https://gitlab-runner-downloads.s3.amazonaws.com/v16.11.1/binaries`).
+  - `gitlab_runner_binary_install_path` GitLab Runner installation folder (default: `C:\Program Files\gitlab-runner`).
 
 Dependencies
 ------------
@@ -68,22 +68,22 @@ None.
 Example Playbook
 ----------------
 
-Install `Gitlab Runner`:
+Install `GitLab Runner`:
 
 ```yaml
 ---
-- name: 'Install gitlab-runner'
+- name: 'Install GitLab Runner'
   hosts: all
 
   roles:
     - role: antmelekhin.gitlab_runner
 ```
 
-Install `Gitlab Runner` v16.9.1:
+Install `GitLab Runner` v16.9.1:
 
 ```yaml
 ---
-- name: 'Install Gitlab Runner v16.9.1'
+- name: 'Install GitLab Runner v16.9.1'
   hosts: all
 
   roles:
@@ -91,18 +91,18 @@ Install `Gitlab Runner` v16.9.1:
       gitlab_runner_package_version: '16.9.1-1'
 ```
 
-Install and configure `Gitlab Runner` with shell executor:
+Install and configure `GitLab Runner` with shell executor:
 
 ```yaml
 ---
-- name: 'Install gitlab-runner'
+- name: 'Install GitLab Runner'
   hosts: all
 
   roles:
     - role: antmelekhin.gitlab_runner
 
   post_tasks:
-    - name: 'Register gitlab-runner'
+    - name: 'Register GitLab Runner'
       ansible.builtin.copy:
         content: |
           concurrent = 1

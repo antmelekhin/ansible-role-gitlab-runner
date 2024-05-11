@@ -11,13 +11,13 @@
         state: 'present'
       when: not ansible_check_mode
 
-    - name: 'Debian | Add the Gitlab Runner repository GPG key'
+    - name: 'Debian | Add the GitLab Runner repository GPG key'
       ansible.builtin.apt_key:
         url: '{{ gitlab_runner_repository_gpgkey_url }}'
         keyring: '{{ _gitlab_runner_local_gpgkey_path }}'
         state: 'present'
 
-    - name: 'Debian | Add the Gitlab Runner repository'
+    - name: 'Debian | Add the GitLab Runner repository'
       ansible.builtin.template:
         src: 'gitlab-runner.list.j2'
         dest: '/etc/apt/sources.list.d/gitlab-runner.list'
@@ -25,7 +25,7 @@
         group: 'root'
         mode: 0644
 
-    - name: 'Debian | Install the Gitlab Runner package'
+    - name: 'Debian | Install the GitLab Runner package'
       ansible.builtin.apt:
         name: "gitlab-runner{{ ('=' + gitlab_runner_package_version) if (gitlab_runner_package_version | length) else '' }}"
         allow_downgrade: true

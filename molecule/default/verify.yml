@@ -22,4 +22,4 @@
 
     - name: 'Version output'
       ansible.builtin.debug:
-        var: __gitlab_runner_version_check.stdout_lines[0].split(' ')[-1]
+        var: __gitlab_runner_version_check.stdout_lines[0].split()[1]
