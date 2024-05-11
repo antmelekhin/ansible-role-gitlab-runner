@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.1](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.2.0...v2.2.1) (2024-05-11)
+
+
+### Documentation
+
+* **README:** update variables documentation ([5006406](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/5006406c604bc8faf06849c5f3d5c6554940f522))
+
+
+### Styles
+
+* rename tasks ([2e422a0](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/2e422a00c82c1f4f10f0a53d192d4beca47e1980))
+
 ## [2.2.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.1.0...v2.2.0) (2024-05-09)
 
 
