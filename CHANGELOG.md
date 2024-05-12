@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.2.2](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.2.1...v2.2.2) (2024-05-12)
+
+
+### Documentation
+
+* **README:** update documentation ([600a19d](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/600a19dfdc11159737556235ed76396f02e777d7))
+
+
+### Fixes
+
+* add `ca-certificates` package ([1d0622c](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/1d0622c9d89b2ff1b0237fe76b9fd253a4d9ecb7))
+* use apt source config and gpgkey names from GitLab installation script ([9b2d98c](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/9b2d98cb6f1524c34261513736ec99bb0b5e21ba))
+
+
+### Styles
+
+* minor changes ([58260d2](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/58260d26f5bc3dd5d28819b7dac02871b89d11ee))
+
 ## [2.2.1](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.2.0...v2.2.1) (2024-05-11)
 
 
