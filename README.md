@@ -49,16 +49,18 @@ Requirements
 Role Variables
 --------------
 
-- Variables for installing GitLab Runner using the GitLab repository:
-  - `gitlab_runner_package_version` The version of the GitLab Runner package (default: `''`).
-  - `gitlab_runner_repository_mirror_url` GitLab repository mirror (default: `https://packages.gitlab.com/runner/gitlab-runner`).
-  - `gitlab_runner_repository_gpgkey_url` URL to GitLab repository GPG key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`).
+Variables for installing GitLab Runner using the GitLab repository (Debian and RedHat based distributions):
 
-- Variables for installing GitLab Runner using a binary file (Windows):
-  - `gitlab_runner_binary_version` The version of the GitLab Runner binary (default: `16.11.1`).
-  - `gitlab_runner_binary_name` GitLab Runner binary name (default: `gitlab-runner-windows-amd64`).
-  - `gitlab_runner_binary_download_url` URL to download the GitLab Runner binary (default: `https://gitlab-runner-downloads.s3.amazonaws.com/v16.11.1/binaries`).
-  - `gitlab_runner_binary_install_path` GitLab Runner installation folder (default: `C:\Program Files\gitlab-runner`).
+- `gitlab_runner_package_version` The version of the GitLab Runner package. By default, GitLab Runner is installed with the latest available version.
+- `gitlab_runner_repository_mirror_url` GitLab repository mirror (default: `https://packages.gitlab.com/runner/gitlab-runner`).
+- `gitlab_runner_repository_gpgkey_url` URL to GitLab repository GPG key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`).
+
+Variables for installing GitLab Runner using a binary file (Windows):
+
+- `gitlab_runner_binary_version` The version of the GitLab Runner binary (default: `16.11.1`).
+- `gitlab_runner_binary_name` GitLab Runner binary name (default: `gitlab-runner-windows-amd64`).
+- `gitlab_runner_binary_download_url` URL to download the GitLab Runner binary (default: `https://gitlab-runner-downloads.s3.amazonaws.com/v16.11.1/binaries`).
+- `gitlab_runner_binary_install_path` GitLab Runner installation folder (default: `C:\Program Files\gitlab-runner`).
 
 Dependencies
 ------------
@@ -68,7 +70,7 @@ None.
 Example Playbook
 ----------------
 
-Install `GitLab Runner`:
+Install GitLab Runner:
 
 ```yaml
 ---
@@ -79,7 +81,7 @@ Install `GitLab Runner`:
     - role: antmelekhin.gitlab_runner
 ```
 
-Install `GitLab Runner` v16.9.1:
+Install GitLab Runner v16.9.1:
 
 ```yaml
 ---
@@ -91,7 +93,7 @@ Install `GitLab Runner` v16.9.1:
       gitlab_runner_package_version: '16.9.1-1'
 ```
 
-Install and configure `GitLab Runner` with shell executor:
+Install GitLab Runner and configure the shell executor:
 
 ```yaml
 ---
