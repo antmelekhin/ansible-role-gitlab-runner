@@ -1,5 +1,5 @@
 ---
-- name: 'Windows | Create the GitLab Runner directory'
+- name: 'Windows | Create a GitLab Runner installation directory'
   ansible.windows.win_file:
     path: '{{ gitlab_runner_binary_install_path }}'
     state: 'directory'
@@ -44,7 +44,7 @@
         dest: '{{ gitlab_runner_binary_install_path }}\gitlab-runner.exe'
       when: not ansible_check_mode
 
-    - name: 'Windows | Ensure that the GitLab Runner is installed as a service'
+    - name: 'Windows | Ensure the GitLab Runner service is installed'
       ansible.windows.win_command:
         cmd: '"{{ gitlab_runner_binary_install_path }}\gitlab-runner.exe" install'
       args:
