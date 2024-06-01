@@ -1,17 +1,17 @@
 ---
 - name: 'Windows | Create a GitLab Runner installation directory'
   ansible.windows.win_file:
-    path: '{{ gitlab_runner_binary_install_path }}'
+    path: '{{ gitlab_runner_install_path }}'
     state: 'directory'
 
 - name: 'Windows | Check if GitLab Runner is installed'
   ansible.windows.win_stat:
-    path: '{{ gitlab_runner_binary_install_path }}\gitlab-runner.exe'
+    path: '{{ gitlab_runner_install_path }}\gitlab-runner.exe'
   register: __gitlab_runner_is_installed
 
 - name: 'Windows | Check the current GitLab Runner version'
   ansible.windows.win_command:
-    cmd: '"{{ gitlab_runner_binary_install_path }}\gitlab-runner.exe" --version'
+    cmd: '"{{ gitlab_runner_install_path }}\gitlab-runner.exe" --version'
   failed_when: false
   changed_when: false
   register: __gitlab_runner_version_check
@@ -24,8 +24,8 @@
   block:
     - name: 'Windows | Download the GitLab Runner binary to a local folder'
       ansible.builtin.get_url:
-        url: '{{ gitlab_runner_binary_download_url }}/{{ gitlab_runner_binary_name }}.exe'
-        dest: '/tmp/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}.exe'
+        url: '{{ gitlab_runner_download_url }}/{{ gitlab_runner_binary_name }}.exe'
+        dest: '{{ gitlab_runner_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}.exe'
         mode: 0644
       delegate_to: localhost
       check_mode: false
@@ -40,15 +40,14 @@
 
     - name: 'Windows | Copy the GitLab Runner binary into a place'
       ansible.windows.win_copy:
-        src: '/tmp/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}.exe'
-        dest: '{{ gitlab_runner_binary_install_path }}\gitlab-runner.exe'
+        src: '{{ gitlab_runner_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}.exe'
+        dest: '{{ gitlab_runner_install_path }}\gitlab-runner.exe'
       when: not ansible_check_mode
 
     - name: 'Windows | Ensure the GitLab Runner service is installed'
       ansible.windows.win_command:
-        cmd: '"{{ gitlab_runner_binary_install_path }}\gitlab-runner.exe" install'
-      args:
-        chdir: '{{ gitlab_runner_binary_install_path }}'
+        cmd: '"{{ gitlab_runner_install_path }}\gitlab-runner.exe" install'
+        chdir: '{{ gitlab_runner_install_path }}'
       when: not __gitlab_runner_is_installed.stat.exists
 
 - name: 'Windows | Ensure the GitLab Runner service is running and enabled at boot'
