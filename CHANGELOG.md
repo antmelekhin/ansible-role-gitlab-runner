@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.2.2...v2.3.0) (2024-06-05)
+
+
+### Improvements
+
+* update variables and common role style ([#9](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/9)) ([e7514e9](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/e7514e92a8a1ad39b8cfbbc2288dd3949354f396))
+
 ## [2.2.2](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.2.1...v2.2.2) (2024-05-12)
 
 
