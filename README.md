@@ -29,6 +29,7 @@ Requirements
 ------------
 
 - Supported version of Ansible: 2.12 and highter.
+- `pywinrm` is a python library for connection Ansible to Windows hosts via [WinRM](https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html).
 - Supported platforms:
   - Debian
     - 10
@@ -43,24 +44,19 @@ Requirements
     - 20.04
     - 22.04
   - Windows
-    - 2016
-    - 2019
+    - all
 
 Role Variables
 --------------
 
-Variables for installing GitLab Runner using the GitLab repository (Debian and RedHat based distributions):
-
 - `gitlab_runner_package_version` The version of the GitLab Runner package. By default, GitLab Runner is installed with the latest available version.
-- `gitlab_runner_repository_mirror_url` GitLab repository mirror (default: `https://packages.gitlab.com/runner/gitlab-runner`).
+- `gitlab_runner_repository_mirror_url` The GitLab repository mirror (default: `https://packages.gitlab.com/runner/gitlab-runner`).
 - `gitlab_runner_repository_gpgkey_url` URL to GitLab repository GPG key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`).
-
-Variables for installing GitLab Runner using a binary file (Windows):
-
 - `gitlab_runner_binary_version` The version of the GitLab Runner binary (default: `16.11.1`).
-- `gitlab_runner_binary_name` GitLab Runner binary name (default: `gitlab-runner-windows-amd64`).
-- `gitlab_runner_binary_download_url` URL to download the GitLab Runner binary (default: `https://gitlab-runner-downloads.s3.amazonaws.com/v16.11.1/binaries`).
-- `gitlab_runner_binary_install_path` GitLab Runner installation folder (default: `C:\Program Files\gitlab-runner`).
+- `gitlab_runner_binary_name` The GitLab Runner binary name (default: `gitlab-runner-windows-amd64`).
+- `gitlab_runner_download_url` URL to download the GitLab Runner binary (default: `https://gitlab-runner-downloads.s3.amazonaws.com/v16.11.1/binaries`).
+- `gitlab_runner_download_path` Local path to download and extract the binary (default: `/tmp`).
+- `gitlab_runner_install_path` GitLab Runner installation folder (default: `C:\Program Files\gitlab-runner`).
 
 Dependencies
 ------------
