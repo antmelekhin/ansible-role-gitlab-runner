@@ -1,40 +1,39 @@
 ---
 galaxy_info:
-  author: antmelekhin
-  role_name: gitlab_runner
-  description: An Ansible role to install GitLab Runner.
+  author: 'antmelekhin'
+  role_name: 'gitlab_runner'
+  description: 'An Ansible role to install GitLab Runner.'
 
-  license: MIT
+  license: 'MIT'
 
   min_ansible_version: '2.12'
 
   platforms:
-    - name: Debian
+    - name: 'Debian'
       versions:
         - 'buster'
         - 'bullseye'
         - 'bookworm'
-    - name: EL
+    - name: 'EL'
       versions:
         - '7'
         - '8'
         - '9'
-    - name: Ubuntu
+    - name: 'Ubuntu'
       versions:
         - 'bionic'
         - 'focal'
         - 'jammy'
-    - name: Windows
+    - name: 'Windows'
       versions:
-        - '2016'
-        - '2019'
+        - 'all'
 
   galaxy_tags:
-    - gitlab
-    - runner
-    - git
-    - ci
-    - linux
-    - windows
+    - 'ci'
+    - 'git'
+    - 'gitlab'
+    - 'linux'
+    - 'runner'
+    - 'windows'
 
 dependencies: []
