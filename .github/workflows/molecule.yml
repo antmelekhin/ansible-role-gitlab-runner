@@ -33,8 +33,11 @@ jobs:
     strategy:
       matrix:
         include:
+          - distro: 'debian-11'
           - distro: 'debian-12'
+          - distro: 'rockylinux-8'
           - distro: 'rockylinux-9'
+          - distro: 'ubuntu-20.04'
           - distro: 'ubuntu-22.04'
 
     steps:
