@@ -61,8 +61,8 @@ else
 fi
 
 # Create Pull Request
-RELEASE_NOTES="$(curl --silent $URL | jq '.[0].description')"
-PR_MESSAGE="The upstream GitLab Runner has released a new software version - **${LATEST_VERSION}**!\n\n${RELEASE_NOTES}\n\nThis automated PR updates code to bring new version into repository."
+RELEASE_NOTES="$(curl --silent $URL | jq '.[0].description' | tr -d '"')"
+PR_MESSAGE="The upstream GitLab Runner has released a new software version - **${LATEST_VERSION}**!\n\n${RELEASE_NOTES}\nThis automated PR updates code to bring new version into repository."
 PR_JSON="$(printf '{"title":"%s","body":"%s","head":"%s","base":"%s"}' "${UPDATE_VERSION_COMMIT}" "${PR_MESSAGE}" "${UPDATE_VERSION_BRANCH}" "main")"
 
 curl -L \
