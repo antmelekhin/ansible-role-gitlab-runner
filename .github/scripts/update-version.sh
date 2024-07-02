@@ -31,8 +31,8 @@ if [[ $CURRENT_VERSION == $LATEST_VERSION ]]; then
 fi
 
 # Update latest version
-sed -i '' "s/${CURRENT_VERSION}/${LATEST_VERSION}/" 'defaults/main.yml'
-sed -i '' "s/${CURRENT_VERSION}/${LATEST_VERSION}/" 'README.md'
+sed -i "s/${CURRENT_VERSION}/${LATEST_VERSION}/" 'defaults/main.yml'
+sed -i "s/${CURRENT_VERSION}/${LATEST_VERSION}/" 'README.md'
 
 # Repository variables
 REPO_NAME=$(git config --get remote.origin.url | sed -e 's|^https://github.com/||')
