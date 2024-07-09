@@ -6,7 +6,7 @@ gitlab_runner_repository_gpgkey_url: '{{ gitlab_runner_repository_mirror_url }}/
 
 # Install GitLab Runner using the binary file (Windows)
 ## See available releases: https://gitlab.com/gitlab-org/gitlab-runner/-/releases
-gitlab_runner_binary_version: '17.1.0'
+gitlab_runner_binary_version: '16.11.2'
 gitlab_runner_binary_name: 'gitlab-runner-{{ _gitlab_runner_os }}-{{ _gitlab_runner_architecture }}'
 gitlab_runner_download_url: 'https://gitlab-runner-downloads.s3.amazonaws.com/v{{ gitlab_runner_binary_version }}/binaries'
 gitlab_runner_download_path: '/tmp'
