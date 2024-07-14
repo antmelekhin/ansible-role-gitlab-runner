@@ -11,8 +11,7 @@
         that:
           - ansible_facts.services['gitlab-runner.service'].state == 'running' or
             ansible_facts.services['gitlab-runner.service'].state == 'active'
-          - ansible_facts.services['gitlab-runner.service'].status == 'enabled' or
-            ansible_facts.services['gitlab-runner.service'].status == 'enabled'
+          - ansible_facts.services['gitlab-runner.service'].status == 'enabled'
 
     - name: 'Check the current GitLab Runner version'
       ansible.builtin.command:
