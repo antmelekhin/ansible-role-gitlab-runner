@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.3.2](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.3.1...v2.3.2) (2024-07-23)
+
+
+### Continuous Integration
+
+* fix updater script ([28c5a32](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/28c5a32d33efb44851d9e41c418f149f990b268d))
+
+
+### Fixes
+
+* **version:** gitlab-runner updated to `17.2.0` release ([#12](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/12)) ([49bf8dd](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/49bf8dd7b353a69ff01f525242dfc77106153de2))
+
+
+### Tests
+
+* fix assert task ([e9c47b6](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/e9c47b6fb1148cf2b6eb0e3d4862574ed6ad61d7))
+
 ## [2.3.1](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.3.0...v2.3.1) (2024-07-02)
 
 
