@@ -31,10 +31,16 @@ Requirements
 - Supported version of Ansible: 2.12 and highter.
 - `pywinrm` is a python library for connection Ansible to Windows hosts via [WinRM](https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html).
 - Supported platforms:
+  - Amazon Linux
+    - 2
+    - 2023
   - Debian
     - 10
     - 11
     - 12
+  - Fedora
+    - 39
+    - 40
   - RHEL
     - 7
     - 8
