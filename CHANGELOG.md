@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.3.3...v2.4.0) (2024-08-05)
+
+
+### Features
+
+* add `fedora` and `amazonlinux` support ([#14](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/14)) ([cebd97b](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/cebd97b8b3f3c72e55dea2c52a659e0b7fbe488a))
+
 ## [2.3.3](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.3.2...v2.3.3) (2024-07-30)
 
 
