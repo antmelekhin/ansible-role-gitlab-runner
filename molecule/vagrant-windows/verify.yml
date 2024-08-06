@@ -21,4 +21,4 @@
 
     - name: 'The GitLab Runner version output'
       ansible.builtin.debug:
-        var: __gitlab_runner_version_check.stdout_lines[0].split()[1]
+        msg: 'The current GitLab Runner version is {{ __gitlab_runner_version_check.stdout_lines[0].split()[1] }}'
