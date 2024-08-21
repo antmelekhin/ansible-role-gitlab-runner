@@ -16,7 +16,7 @@
     - name: 'Debian | Add the GitLab Runner repository GPG key'
       ansible.builtin.apt_key:
         url: '{{ gitlab_runner_repository_gpgkey_url }}'
-        keyring: '{{ _gitlab_runner_local_gpgkey_path }}'
+        keyring: '{{ __gitlab_runner_repository_gpgkey_keyring }}'
         state: 'present'
 
     - name: 'Debian | Add the GitLab Runner repository'
