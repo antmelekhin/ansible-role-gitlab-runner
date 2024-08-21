@@ -2,11 +2,11 @@
 
 [runner_gitlab-runner]
 name=runner_gitlab-runner
-baseurl={{ _gitlab_runner_repository }}
+baseurl={{ gitlab_runner_repository }}
 repo_gpgcheck=1
 gpgcheck=1
 enabled=1
-gpgkey={{ _gitlab_runner_repository_gpgkey_urls | join('\n\t') }}
+gpgkey={{ gitlab_runner_repository_gpgkey_url | join('\n\t') }}
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
