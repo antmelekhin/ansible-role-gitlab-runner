@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.4.1...v2.5.0) (2024-08-21)
+
+
+### Improvements
+
+* merge OS-specific variables into the `vars/main.yml` file ([#16](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/16)) ([846eccd](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/846eccd83a90edb18a3a322d19f7155358106ceb))
+
 ## [2.4.1](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.4.0...v2.4.1) (2024-08-20)
 
 
