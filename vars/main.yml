@@ -22,7 +22,7 @@ __gitlab_runner_repository: '{{ __gitlab_runner_repository_dict[ansible_os_famil
 __gitlab_runner_os_dict:
   Win32NT: 'windows'
 
-__gitlab_runner_os: '{{ __gitlab_runner_os_dict[ansible_system] }}'
+__gitlab_runner_os: '{{ __gitlab_runner_os_dict[ansible_system] | default(omit) }}'
 
 __gitlab_runner_architecture_dict:
   Win32NT:
@@ -34,4 +34,4 @@ __gitlab_runner_architecture: '{{ __gitlab_runner_architecture_dict[ansible_syst
 __gitlab_runner_install_path_dict:
   Win32NT: 'C:\Program Files\gitlab-runner'
 
-__gitlab_runner_install_path: '{{ __gitlab_runner_install_path_dict[ansible_system] }}'
+__gitlab_runner_install_path: '{{ __gitlab_runner_install_path_dict[ansible_system] | default(omit) }}'
