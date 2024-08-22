@@ -55,14 +55,9 @@ Requirements
 Role Variables
 --------------
 
-- `gitlab_runner_package_version` The version of the GitLab Runner package. By default, GitLab Runner is installed with the latest available version.
-- `gitlab_runner_repository_mirror_url` The GitLab repository mirror (default: `https://packages.gitlab.com/runner/gitlab-runner`).
-- `gitlab_runner_repository_gpgkey_url` URL to GitLab repository GPG key file (default: `https://packages.gitlab.com/runner/gitlab-runner/gpgkey`).
-- `gitlab_runner_binary_version` The version of the GitLab Runner binary (default: `17.3.0`).
-- `gitlab_runner_binary_name` The GitLab Runner binary name (default: `gitlab-runner-windows-amd64`).
-- `gitlab_runner_download_url` URL to download the GitLab Runner binary (default: `https://gitlab-runner-downloads.s3.amazonaws.com/v17.3.0/binaries`).
-- `gitlab_runner_download_path` Local path to download and extract the binary (default: `/tmp`).
-- `gitlab_runner_install_path` GitLab Runner installation folder (default: `C:\Program Files\gitlab-runner`).
+All variables that can be overridden are stored in the [defaults/main.yml](https://github.com/antmelekhin/ansible-role-gitlab-runner/blob/main/defaults/main.yml) file.
+Please refer to the [meta/argument_specs.yml](https://github.com/antmelekhin/ansible-role-gitlab-runner/blob/main/meta/argument_specs.yml) file for a description of the available variables.
+Similarly, descriptions and defaults for preset variables can be found in the [vars/main.yml](https://github.com/antmelekhin/ansible-role-gitlab-runner/blob/main/vars/main.yml) file.
 
 Dependencies
 ------------

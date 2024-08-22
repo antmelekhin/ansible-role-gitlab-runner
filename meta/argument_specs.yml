@@ -1,0 +1,50 @@
+---
+argument_specs:
+  main:
+    short_description: 'GitLab Runner'
+    description:
+      - 'An Ansible role to install L(GitLab Runner,https://docs.gitlab.com/runner/).'
+    author:
+      - 'Melekhin Anton'
+    options:
+      gitlab_runner_package_version:
+        type: 'str'
+        description:
+          - 'The version of the GitLab Runner package.'
+          - 'By default, GitLab Runner is installed with the latest available version.'
+      gitlab_runner_repository_mirror_url:
+        type: 'str'
+        description:
+          - 'The GitLab Runner repository mirror.'
+          - 'By default, the role uses the official GitLab Runner repository mirror.'
+        default: 'https://packages.gitlab.com/runner/gitlab-runner'
+      gitlab_runner_repository_gpgkey_url:
+        type: 'str'
+        description:
+          - 'Specify where to fetch the GitLab Runner GPG key file from.'
+          - 'By default, the role uses the official GitLab Runner GPG key.'
+        default: '{{ __gitlab_runner_repository_gpgkey_url }}'
+      gitlab_runner_repository:
+        type: 'str'
+        description: 'Specify the GitLab Runner repository.'
+        default: '{{ __gitlab_runner_repository }}'
+      gitlab_runner_binary_version:
+        type: 'str'
+        description: 'The version of the GitLab Runner binary.'
+        default: '17.3.0'
+      gitlab_runner_binary_name:
+        type: 'str'
+        description: 'The GitLab Runner binary name.'
+        default: 'gitlab-runner-{{ __gitlab_runner_os }}-{{ __gitlab_runner_architecture }}'
+      gitlab_runner_download_url:
+        type: 'str'
+        description: 'URL to download the GitLab Runner binary.'
+        default: 'https://gitlab-runner-downloads.s3.amazonaws.com/v{{ gitlab_runner_binary_version }}/binaries'
+      gitlab_runner_download_path:
+        type: 'path'
+        description: 'Local path to download the binary.'
+        default: '/tmp'
+      gitlab_runner_install_path:
+        type: 'path'
+        description: 'GitLab Runner installation folder.'
+        default: '{{ __gitlab_runner_install_path }}'
