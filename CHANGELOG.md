@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.5.0...v2.6.0) (2024-08-22)
+
+
+### Features
+
+* add `meta/argument_specs.yml` file ([#17](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/17)) ([3c837bf](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/3c837bf57917f598ed80c377b88dd3819372cdf9))
+
 ## [2.5.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.4.1...v2.5.0) (2024-08-21)
 
 
