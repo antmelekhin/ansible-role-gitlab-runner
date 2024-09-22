@@ -41,6 +41,8 @@ Requirements
   - Fedora
     - 39
     - 40
+  - MacOSX
+    - all
   - RHEL
     - 7
     - 8

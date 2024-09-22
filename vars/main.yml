@@ -8,7 +8,7 @@ __gitlab_runner_repository_gpgkey_url_dict:
     - '{{ gitlab_runner_repository_mirror_url }}/gpgkey/runner-gitlab-runner-4C80FB51394521E9.pub.gpg'
     - '{{ gitlab_runner_repository_mirror_url }}/gpgkey/runner-gitlab-runner-49F16C5CC3A0F81F.pub.gpg'
 
-__gitlab_runner_repository_gpgkey_url: '{{ __gitlab_runner_repository_gpgkey_url_dict[ansible_os_family] }}'
+__gitlab_runner_repository_gpgkey_url: '{{ __gitlab_runner_repository_gpgkey_url_dict[ansible_os_family] | default(omit) }}'
 __gitlab_runner_repository_gpgkey_keyring: '/usr/share/keyrings/runner_gitlab-runner-archive-keyring.gpg'
 
 # Default GitLab Runner repository
@@ -16,15 +16,19 @@ __gitlab_runner_repository_dict:
   Debian: '{{ gitlab_runner_repository_mirror_url }}/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main'
   RedHat: "{{ gitlab_runner_repository_mirror_url }}/{{ (ansible_distribution | lower) if ansible_distribution in ['Fedora', 'Amazon'] else 'el' }}/{{ ansible_distribution_major_version }}/$basearch"
 
-__gitlab_runner_repository: '{{ __gitlab_runner_repository_dict[ansible_os_family] }}'
+__gitlab_runner_repository: '{{ __gitlab_runner_repository_dict[ansible_os_family] | default(omit) }}'
 
 # Install GitLab Runner using the binary file (Windows)
 __gitlab_runner_os_dict:
+  Darwin: 'darwin'
   Win32NT: 'windows'
 
 __gitlab_runner_os: '{{ __gitlab_runner_os_dict[ansible_system] | default(omit) }}'
 
 __gitlab_runner_architecture_dict:
+  Darwin:
+    x86_64: 'amd64'
+    aarch64: 'arm64'
   Win32NT:
     32-bit: '386'
     64-bit: 'amd64'
@@ -32,6 +36,7 @@ __gitlab_runner_architecture_dict:
 __gitlab_runner_architecture: '{{ __gitlab_runner_architecture_dict[ansible_system][ansible_architecture] | default(ansible_architecture) }}'
 
 __gitlab_runner_install_path_dict:
+  Darwin: '/usr/local/bin'
   Win32NT: 'C:\Program Files\gitlab-runner'
 
 __gitlab_runner_install_path: '{{ __gitlab_runner_install_path_dict[ansible_system] | default(omit) }}'
