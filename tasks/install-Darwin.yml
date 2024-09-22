@@ -44,7 +44,6 @@
     - name: 'Darwin | Ensure the GitLab Runner service is installed'
       ansible.builtin.command:
         cmd: '"{{ gitlab_runner_install_path }}/gitlab-runner" install'
-        chdir: '{{ gitlab_runner_install_path }}'
       when: not __gitlab_runner_is_installed.stat.exists
 
 - name: 'Darwin | Ensure the GitLab Runner service is running and enabled at boot'
