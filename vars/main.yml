@@ -18,7 +18,7 @@ __gitlab_runner_repository_dict:
 
 __gitlab_runner_repository: '{{ __gitlab_runner_repository_dict[ansible_os_family] | default(omit) }}'
 
-# Install GitLab Runner using the binary file (Windows)
+# Install GitLab Runner using the binary file (Windows and MacOSX)
 __gitlab_runner_os_dict:
   Darwin: 'darwin'
   Win32NT: 'windows'
