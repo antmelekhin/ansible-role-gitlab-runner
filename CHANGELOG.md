@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.6.2...v2.7.0) (2024-09-24)
+
+
+### Features
+
+* add `darwin` support ([#19](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/19)) ([beecbf0](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/beecbf0f73344aaf5709bc8763fa3b4915e035a5))
+
 ## [2.6.2](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.6.1...v2.6.2) (2024-09-23)
 
 
