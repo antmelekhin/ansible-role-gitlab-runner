@@ -37,6 +37,7 @@
       ansible.builtin.copy:
         src: '{{ gitlab_runner_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}'
         dest: '{{ gitlab_runner_install_path }}/gitlab-runner'
+        owner: '{{ ansible_user_id }}'
         mode: 0755
       when: not ansible_check_mode
       become: true
@@ -44,6 +45,7 @@
     - name: 'Darwin | Ensure the GitLab Runner service is installed'
       ansible.builtin.command:
         cmd: '"{{ gitlab_runner_install_path }}/gitlab-runner" install'
+        creates: '/Users/{{ ansible_user_id }}/.gitlab-runner'
       when: not __gitlab_runner_is_installed.stat.exists
 
 - name: 'Darwin | Ensure the GitLab Runner service is running and enabled at boot'
