@@ -1,0 +1,55 @@
+---
+- name: 'Darwin | Check if GitLab Runner is installed'
+  ansible.builtin.stat:
+    path: '{{ gitlab_runner_install_path }}/gitlab-runner'
+  register: __gitlab_runner_is_installed
+
+- name: 'Darwin | Check the current GitLab Runner version'
+  ansible.builtin.command:
+    cmd: '{{ gitlab_runner_install_path }}/gitlab-runner --version'
+  failed_when: false
+  changed_when: false
+  register: __gitlab_runner_version_check
+
+- name: 'Darwin | Download and install GitLab Runner'
+  when:
+    - not __gitlab_runner_is_installed.stat.exists or
+      (__gitlab_runner_version_check.stdout_lines | length and
+      gitlab_runner_binary_version not in __gitlab_runner_version_check.stdout_lines[0].split()[1])
+  block:
+    - name: 'Darwin | Download the GitLab Runner binary to a local folder'
+      ansible.builtin.get_url:
+        url: '{{ gitlab_runner_download_url }}/{{ gitlab_runner_binary_name }}'
+        dest: '{{ gitlab_runner_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}'
+        mode: 0644
+      delegate_to: localhost
+      check_mode: false
+
+    - name: 'Darwin | Ensure the GitLab Runner service is stopped before version update'
+      community.general.launchd:
+        name: 'gitlab-runner'
+        state: 'stopped'
+      when:
+        - __gitlab_runner_is_installed.stat.exists and
+          gitlab_runner_binary_version not in __gitlab_runner_version_check.stdout_lines[0].split()[1]
+
+    - name: 'Darwin | Copy the GitLab Runner binary into a place'
+      ansible.builtin.copy:
+        src: '{{ gitlab_runner_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}'
+        dest: '{{ gitlab_runner_install_path }}/gitlab-runner'
+        owner: '{{ ansible_user_id }}'
+        mode: 0755
+      when: not ansible_check_mode
+      become: true
+
+    - name: 'Darwin | Ensure the GitLab Runner service is installed'
+      ansible.builtin.command:
+        cmd: '"{{ gitlab_runner_install_path }}/gitlab-runner" install'
+        creates: '/Users/{{ ansible_user_id }}/.gitlab-runner'
+      when: not __gitlab_runner_is_installed.stat.exists
+
+- name: 'Darwin | Ensure the GitLab Runner service is running and enabled at boot'
+  community.general.launchd:
+    name: 'gitlab-runner'
+    enabled: true
+    state: 'started'

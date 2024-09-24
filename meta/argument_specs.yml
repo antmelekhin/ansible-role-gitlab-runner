@@ -4,8 +4,7 @@ argument_specs:
     short_description: 'GitLab Runner'
     description:
       - 'An Ansible role to install L(GitLab Runner,https://docs.gitlab.com/runner/).'
-    author:
-      - 'Melekhin Anton'
+    author: 'Melekhin Anton'
     options:
       gitlab_runner_package_version:
         type: 'str'
