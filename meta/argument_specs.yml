@@ -34,7 +34,7 @@ argument_specs:
       gitlab_runner_binary_name:
         type: 'str'
         description: 'The GitLab Runner binary name.'
-        default: 'gitlab-runner-{{ __gitlab_runner_os }}-{{ __gitlab_runner_architecture }}'
+        default: 'gitlab-runner-{{ __gitlab_runner_binary_os }}-{{ __gitlab_runner_binary_architecture }}'
       gitlab_runner_download_url:
         type: 'str'
         description: 'URL to download the GitLab Runner binary.'
