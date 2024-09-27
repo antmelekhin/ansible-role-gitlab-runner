@@ -35,8 +35,8 @@ __gitlab_runner_binary_architecture_dict:
 
 __gitlab_runner_binary_architecture: '{{ __gitlab_runner_binary_architecture_dict[ansible_system][ansible_architecture] | default(ansible_architecture) }}'
 
-__gitlab_runner_install_path_dict:
+__gitlab_runner_binary_install_path_dict:
   Darwin: '/usr/local/bin'
   Win32NT: 'C:\Program Files\gitlab-runner'
 
-__gitlab_runner_install_path: '{{ __gitlab_runner_install_path_dict[ansible_system] | default(omit) }}'
+__gitlab_runner_binary_install_path: '{{ __gitlab_runner_binary_install_path_dict[ansible_system] | default(omit) }}'

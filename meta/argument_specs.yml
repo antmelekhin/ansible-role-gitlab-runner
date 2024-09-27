@@ -35,15 +35,15 @@ argument_specs:
         type: 'str'
         description: 'The GitLab Runner binary name.'
         default: 'gitlab-runner-{{ __gitlab_runner_binary_os }}-{{ __gitlab_runner_binary_architecture }}'
-      gitlab_runner_download_url:
+      gitlab_runner_binary_download_url:
         type: 'str'
         description: 'URL to download the GitLab Runner binary.'
         default: 'https://gitlab-runner-downloads.s3.amazonaws.com/v{{ gitlab_runner_binary_version }}/binaries'
-      gitlab_runner_download_path:
+      gitlab_runner_binary_download_path:
         type: 'path'
         description: 'Local path to download the binary.'
         default: '/tmp'
-      gitlab_runner_install_path:
+      gitlab_runner_binary_install_path:
         type: 'path'
         description: 'GitLab Runner installation folder.'
-        default: '{{ __gitlab_runner_install_path }}'
+        default: '{{ __gitlab_runner_binary_install_path }}'
