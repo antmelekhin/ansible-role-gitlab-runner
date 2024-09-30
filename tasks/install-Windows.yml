@@ -1,32 +1,36 @@
 ---
 - name: 'Windows | Create a GitLab Runner installation directory'
   ansible.windows.win_file:
-    path: '{{ gitlab_runner_install_path }}'
+    path: '{{ gitlab_runner_binary_install_path }}'
     state: 'directory'
 
 - name: 'Windows | Check if GitLab Runner is installed'
   ansible.windows.win_stat:
-    path: '{{ gitlab_runner_install_path }}\gitlab-runner.exe'
-  register: __gitlab_runner_is_installed
+    path: '{{ gitlab_runner_binary_install_path }}\gitlab-runner.exe'
+  register: __gitlab_runner_binary_is_installed
 
 - name: 'Windows | Check the current GitLab Runner version'
   ansible.windows.win_command:
-    cmd: '"{{ gitlab_runner_install_path }}\gitlab-runner.exe" --version'
+    cmd: '"{{ gitlab_runner_binary_install_path }}\gitlab-runner.exe" --version'
   failed_when: false
   changed_when: false
-  register: __gitlab_runner_version_check
+  register: __gitlab_runner_binary_version_check
 
 - name: 'Windows | Download and install GitLab Runner'
   when:
-    - not __gitlab_runner_is_installed.stat.exists or
-      (__gitlab_runner_version_check.stdout_lines | length and
-      gitlab_runner_binary_version not in __gitlab_runner_version_check.stdout_lines[0].split()[1])
+    - not __gitlab_runner_binary_is_installed.stat.exists or
+      (__gitlab_runner_binary_version_check.stdout_lines | length and
+      gitlab_runner_binary_version not in __gitlab_runner_binary_version_check.stdout_lines[0].split()[1])
   block:
     - name: 'Windows | Download the GitLab Runner binary to a local folder'
       ansible.builtin.get_url:
-        url: '{{ gitlab_runner_download_url }}/{{ gitlab_runner_binary_name }}.exe'
-        dest: '{{ gitlab_runner_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}.exe'
+        url: '{{ gitlab_runner_binary_download_url }}/{{ gitlab_runner_binary_name }}.exe'
+        dest: '{{ gitlab_runner_binary_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}.exe'
         mode: 0644
+      register: __gitlab_runner_binary_download_result
+      until: __gitlab_runner_binary_download_result is succeeded
+      retries: 3
+      delay: 5
       delegate_to: localhost
       check_mode: false
 
@@ -35,20 +39,20 @@
         name: 'gitlab-runner'
         state: 'stopped'
       when:
-        - __gitlab_runner_is_installed.stat.exists and
-          gitlab_runner_binary_version not in __gitlab_runner_version_check.stdout_lines[0].split()[1]
+        - __gitlab_runner_binary_is_installed.stat.exists and
+          gitlab_runner_binary_version not in __gitlab_runner_binary_version_check.stdout_lines[0].split()[1]
 
     - name: 'Windows | Copy the GitLab Runner binary to a target host'
       ansible.windows.win_copy:
-        src: '{{ gitlab_runner_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}.exe'
-        dest: '{{ gitlab_runner_install_path }}\gitlab-runner.exe'
+        src: '{{ gitlab_runner_binary_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}.exe'
+        dest: '{{ gitlab_runner_binary_install_path }}\gitlab-runner.exe'
       when: not ansible_check_mode
 
     - name: 'Windows | Ensure the GitLab Runner service is installed'
       ansible.windows.win_command:
-        cmd: '"{{ gitlab_runner_install_path }}\gitlab-runner.exe" install'
-        chdir: '{{ gitlab_runner_install_path }}'
-      when: not __gitlab_runner_is_installed.stat.exists
+        cmd: '"{{ gitlab_runner_binary_install_path }}\gitlab-runner.exe" install'
+        chdir: '{{ gitlab_runner_binary_install_path }}'
+      when: not __gitlab_runner_binary_is_installed.stat.exists
 
 - name: 'Windows | Ensure the GitLab Runner service is running and enabled at boot'
   ansible.windows.win_service:

@@ -25,6 +25,15 @@ To continue using this role without side effects, you'll need to delete the pinn
     - role: antmelekhin.gitlab_runner
 ```
 
+Update to 3.x
+-------------
+
+Since the 3.0.0 version of the role, some variables have changed. You will need to update them in your playbooks.
+
+- `gitlab_runner_download_url` to `gitlab_runner_binary_download_url`
+- `gitlab_runner_download_path` to `gitlab_runner_binary_download_path`
+- `gitlab_runner_install_path` to `gitlab_runner_binary_install_path`
+
 Requirements
 ------------
 
