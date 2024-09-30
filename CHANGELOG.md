@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.0.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.7.0...v3.0.0) (2024-09-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename variables used for installation from the binary (#22)
+
+### Continuous Integration
+
+* use `ubuntu-22.04` instead of `ubuntu-latest` ([4489246](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/448924602a5e122d9841a9c73e5d392fa426e7ce))
+
+
+### Styles
+
+* minor fixes in task names ([ac5f7fe](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/ac5f7fef84f0db72d9b1e4779b577adc0b0aee2e))
+* rename some binary vars ([f71044e](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/f71044e4f2e1c4e7a9bd34fe9760b2328928709c))
+* rename variables used for installation from the binary ([#22](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/22)) ([7a8c428](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/7a8c428f7a9895d89525ad821bf70693238a6afb))
+
 ## [2.7.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.6.2...v2.7.0) (2024-09-24)
 
 
