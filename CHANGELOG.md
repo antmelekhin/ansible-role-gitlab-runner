@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.0.1](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.0.0...v3.0.1) (2024-10-05)
+
+
+### Continuous Integration
+
+* reverted runner image to `ubuntu-22.04` ([f109795](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/f109795157e6e1353c25b7b282a56bfa87866a9a))
+* updated runner image to `ubuntu-24.04` ([8327ce6](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/8327ce6b52dc1e57ba535bac88bff6acc427a6a2))
+
+
+### Fixes
+
+* add `become: false` to localhost delegated tasks ([2c0e0e9](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/2c0e0e947711cacf4db9967023189780db7febff))
+
+
+### Styles
+
+* minor fixes ([204804f](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/204804f1c3b9fc6c50ad4d558ddb37b2c3cca86f))
+
 ## [3.0.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v2.7.0...v3.0.0) (2024-09-30)
 
 
