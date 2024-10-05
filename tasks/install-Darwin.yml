@@ -38,13 +38,13 @@
           gitlab_runner_binary_version not in __gitlab_runner_binary_version_check.stdout_lines[0].split()[1]
 
     - name: 'Darwin | Copy the GitLab Runner binary to a target host'
+      become: true
       ansible.builtin.copy:
         src: '{{ gitlab_runner_binary_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}'
         dest: '{{ gitlab_runner_binary_install_path }}/gitlab-runner'
         owner: '{{ ansible_user_id }}'
         mode: 0755
       when: not ansible_check_mode
-      become: true
 
     - name: 'Darwin | Ensure the GitLab Runner service is installed'
       ansible.builtin.command:
