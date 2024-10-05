@@ -23,6 +23,7 @@
       gitlab_runner_binary_version not in __gitlab_runner_binary_version_check.stdout_lines[0].split()[1])
   block:
     - name: 'Windows | Download the GitLab Runner binary to a local folder'
+      become: false
       ansible.builtin.get_url:
         url: '{{ gitlab_runner_binary_download_url }}/{{ gitlab_runner_binary_name }}.exe'
         dest: '{{ gitlab_runner_binary_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}.exe'
