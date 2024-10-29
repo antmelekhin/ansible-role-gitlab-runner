@@ -13,7 +13,7 @@ __gitlab_runner_repository_gpgkey_keyring: '/usr/share/keyrings/runner_gitlab-ru
 
 # Default GitLab Runner repository
 __gitlab_runner_repository_dict:
-  Debian: '{{ gitlab_runner_repository_mirror_url }}/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main'
+  Debian: 'deb [signed-by={{ __gitlab_runner_repository_gpgkey_keyring }}] {{ gitlab_runner_repository_mirror_url }}/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main'
   RedHat: "{{ gitlab_runner_repository_mirror_url }}/{{ (ansible_distribution | lower) if ansible_distribution in ['Fedora', 'Amazon'] else 'el' }}/{{ ansible_distribution_major_version }}/$basearch"
 
 __gitlab_runner_repository: '{{ __gitlab_runner_repository_dict[ansible_os_family] | default(omit) }}'
@@ -33,7 +33,7 @@ __gitlab_runner_binary_architecture_dict:
     32-bit: '386'
     64-bit: 'amd64'
 
-__gitlab_runner_binary_architecture: '{{ __gitlab_runner_binary_architecture_dict[ansible_system][ansible_architecture] | default(ansible_architecture) }}'
+__gitlab_runner_binary_architecture: '{{ __gitlab_runner_binary_architecture_dict[ansible_system][ansible_architecture | lower] | default(ansible_architecture) }}'
 
 __gitlab_runner_binary_install_path_dict:
   Darwin: '/usr/local/bin'
