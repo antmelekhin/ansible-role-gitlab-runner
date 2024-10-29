@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.4](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.0.3...v3.0.4) (2024-10-29)
+
+
+### Code Refactoring
+
+* update `vars/main.yml` file ([097ed59](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/097ed59d9ddea1426bf6434cd1091adb275f520e))
+
 ## [3.0.3](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.0.2...v3.0.3) (2024-10-29)
 
 
