@@ -52,6 +52,6 @@ jobs:
       - name: 'Testing an Ansible role with Molecule'
         run: |
           pip3 install --no-cache-dir tox
-          tox -- test -s ${{ matrix.scenario }}
+          tox
         env:
           TAG: ${{ matrix.distro }}
