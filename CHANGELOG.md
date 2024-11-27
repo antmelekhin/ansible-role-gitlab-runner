@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.0.6](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.0.5...v3.0.6) (2024-11-27)
+
+
+### Documentation
+
+* **README:** updated requirements and dependencies ([09e8381](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/09e83815e90bd4802ede59afb000335e2e0bd6d3))
+
+
+### Fixes
+
+* normalize `ansible_architecture` for windows ([fbf50ea](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/fbf50ea4974ae8d701763a85e84055885672d0a7))
+
 ## [3.0.5](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.0.4...v3.0.5) (2024-11-04)
 
 
