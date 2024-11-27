@@ -37,7 +37,7 @@ Since the 3.0.0 version of the role, some variables have changed. You will need 
 Requirements
 ------------
 
-- Supported version of Ansible: 2.12 and highter.
+- Supported version of Ansible: 2.12 and higher. Systems with Python versions below than 3.7 are not compatible with ansible-core 2.17 (see [ansible/ansible#83357](https://github.com/ansible/ansible/issues/83357#issuecomment-2150254754)).
 - `pywinrm` is a python library for connection Ansible to Windows hosts via [WinRM](https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html).
 - Supported platforms:
   - Amazon Linux
@@ -73,7 +73,14 @@ Similarly, descriptions and defaults for preset variables can be found in the [v
 Dependencies
 ------------
 
-None.
+When using Ansible core, you will also need to install the following Ansible collections:
+
+```yaml
+---
+collections:
+  - name: community.general
+  - name: community.windows
+```
 
 Example Playbook
 ----------------
