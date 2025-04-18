@@ -17,7 +17,7 @@ CURRENT_VERSION="$(awk '/^.*_binary_version:/{print $2}' 'defaults/main.yml' | t
 
 # Get latest version
 URL='https://gitlab.com/api/v4/projects/gitlab-org%2Fgitlab-runner/releases'
-LATEST_VERSION="$(curl --silent $URL | jq '.[].tag_name' | tr -d '"v' | sort -rn | head -1)"
+LATEST_VERSION="$(curl --silent $URL | jq '.[].tag_name' | tr -d '"v' | sort -rV | head -1)"
 
 # Validate latest version
 if ! [[ $LATEST_VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then
