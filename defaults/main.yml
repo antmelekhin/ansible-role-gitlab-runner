@@ -7,7 +7,7 @@ gitlab_runner_repository: '{{ __gitlab_runner_repository }}'
 
 # Install GitLab Runner using the binary file (Windows and MacOSX)
 ## See available releases: https://gitlab.com/gitlab-org/gitlab-runner/-/releases
-gitlab_runner_binary_version: '18.0.3'
+gitlab_runner_binary_version: '18.1.0'
 gitlab_runner_binary_name: 'gitlab-runner-{{ __gitlab_runner_binary_os }}-{{ __gitlab_runner_binary_architecture }}'
 gitlab_runner_binary_download_url: 'https://gitlab-runner-downloads.s3.amazonaws.com/v{{ gitlab_runner_binary_version }}/binaries'
 gitlab_runner_binary_download_path: '/tmp'
