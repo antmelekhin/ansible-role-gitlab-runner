@@ -1,11 +1,13 @@
 ---
+gitlab_runner_installation_method: 'binary'
+
 # Install GitLab Runner from the GitLab repository (Debian and RedHat based distributions)
 gitlab_runner_package_version: ''
 gitlab_runner_repository_mirror_url: 'https://packages.gitlab.com/runner/gitlab-runner'
 gitlab_runner_repository_gpgkey_url: '{{ __gitlab_runner_repository_gpgkey_url }}'
 gitlab_runner_repository: '{{ __gitlab_runner_repository }}'
 
-# Install GitLab Runner using the binary file (Windows and MacOSX)
+# Install GitLab Runner using the binary file (Linux, MacOSX, Windows)
 ## See available releases: https://gitlab.com/gitlab-org/gitlab-runner/-/releases
 gitlab_runner_binary_version: '18.1.1'
 gitlab_runner_binary_name: 'gitlab-runner-{{ __gitlab_runner_binary_os }}-{{ __gitlab_runner_binary_architecture }}'
