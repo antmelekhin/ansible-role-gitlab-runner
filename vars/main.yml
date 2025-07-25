@@ -18,15 +18,19 @@ __gitlab_runner_repository_dict:
 
 __gitlab_runner_repository: '{{ __gitlab_runner_repository_dict[ansible_os_family] | default(omit) }}'
 
-# Install GitLab Runner using the binary file (Windows and MacOSX)
+# Install GitLab Runner using the binary file (Linux, MacOSX, Windows)
 __gitlab_runner_binary_os_dict:
   Darwin: 'darwin'
+  Linux: 'linux'
   Win32NT: 'windows'
 
 __gitlab_runner_binary_os: '{{ __gitlab_runner_binary_os_dict[ansible_system] | default(omit) }}'
 
 __gitlab_runner_binary_architecture_dict:
   Darwin:
+    x86_64: 'amd64'
+    aarch64: 'arm64'
+  Linux:
     x86_64: 'amd64'
     aarch64: 'arm64'
   Win32NT:
@@ -37,6 +41,7 @@ __gitlab_runner_binary_architecture: '{{ __gitlab_runner_binary_architecture_dic
 
 __gitlab_runner_binary_install_path_dict:
   Darwin: '/usr/local/bin'
+  Linux: '/usr/local/bin'
   Win32NT: 'C:\Program Files\gitlab-runner'
 
 __gitlab_runner_binary_install_path: '{{ __gitlab_runner_binary_install_path_dict[ansible_system] | default(omit) }}'
