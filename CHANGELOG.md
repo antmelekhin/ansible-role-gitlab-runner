@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.22](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.0.21...v3.0.22) (2025-07-25)
+
+
+### Fixes
+
+* **version:** gitlab-runner updated to `18.2.0` release ([#42](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/42)) ([6c181e8](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/6c181e81e5da0aad1b637e889f1896b185224dd5))
+
 ## [3.0.21](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.0.20...v3.0.21) (2025-07-01)
 
 
