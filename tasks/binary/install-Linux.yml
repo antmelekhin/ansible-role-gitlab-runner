@@ -61,6 +61,7 @@
       become: true
       ansible.builtin.command:
         cmd: '"{{ gitlab_runner_binary_install_path }}/gitlab-runner" install --user gitlab-runner --working-directory /home/gitlab-runner'
+        creates: '/etc/gitlab-runner'
       when: not __gitlab_runner_binary_is_installed.stat.exists
 
 - name: 'Linux | Ensure the GitLab Runner service is running and enabled at boot'
