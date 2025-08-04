@@ -1,4 +1,20 @@
 ---
+- name: 'Linux | Prepare for installing GitLab Runner'
+  become: true
+  block:
+    - name: Linux | Create a GitLab Runner group'
+      ansible.builtin.group:
+        name: '{{ mysqld_exporter_group }}'
+        system: true
+
+    - name: 'Linux | Create a GitLab Runner user'
+      ansible.builtin.user:
+        name: 'gitlab-runner'
+        comment: 'GitLab Runner'
+        system: true
+        createhome: true
+        shell: '/bin/bash'
+
 - name: 'Linux | Check if GitLab Runner is installed'
   ansible.builtin.stat:
     path: '{{ gitlab_runner_binary_install_path }}/gitlab-runner'
@@ -10,15 +26,6 @@
   failed_when: false
   changed_when: false
   register: __gitlab_runner_binary_version_check
-
-- name: 'Linux | Create a GitLab Runner user'
-  become: false
-  ansible.builtin.user:
-    name: 'gitlab-runner'
-    comment: 'GitLab Runner'
-    system: true
-    createhome: true
-    shell: '/bin/bash'
 
 - name: 'Linux | Download and install GitLab Runner'
   when:
