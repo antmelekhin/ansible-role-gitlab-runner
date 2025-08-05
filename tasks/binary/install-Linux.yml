@@ -4,7 +4,7 @@
   block:
     - name: Linux | Create a GitLab Runner group'
       ansible.builtin.group:
-        name: '{{ mysqld_exporter_group }}'
+        name: 'gitlab-runner'
         system: true
 
     - name: 'Linux | Create a GitLab Runner user'
