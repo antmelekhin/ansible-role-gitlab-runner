@@ -6,6 +6,14 @@ argument_specs:
       - 'An Ansible role to install L(GitLab Runner,https://docs.gitlab.com/runner/).'
     author: 'Melekhin Anton'
     options:
+      gitlab_runner_setup:
+        type: 'str'
+        description: ''
+        choices:
+          - 'install'
+          - 'upgrade'
+          - 'uninstall'
+        default: 'install'
       gitlab_runner_package_version:
         type: 'str'
         description:
