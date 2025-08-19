@@ -1,4 +1,6 @@
 ---
+gitlab_runner_setup: 'install'
+
 # Install GitLab Runner from the GitLab repository (Debian and RedHat based distributions)
 gitlab_runner_package_version: ''
 gitlab_runner_repository_mirror_url: 'https://packages.gitlab.com/runner/gitlab-runner'
