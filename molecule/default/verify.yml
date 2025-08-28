@@ -15,7 +15,7 @@
 
     - name: 'Check the current GitLab Runner version'
       ansible.builtin.command:
-        cmd: '/usr/bin/gitlab-runner --version'
+        cmd: '/usr/local/bin/gitlab-runner --version'
       changed_when: false
       register: __gitlab_runner_version_check
 
