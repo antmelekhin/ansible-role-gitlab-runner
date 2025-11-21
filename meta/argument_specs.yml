@@ -37,7 +37,7 @@ argument_specs:
       gitlab_runner_binary_version:
         type: 'str'
         description: 'The version of the GitLab Runner binary.'
-        default: '18.5.0'
+        default: '18.6.0'
       gitlab_runner_binary_name:
         type: 'str'
         description: 'The GitLab Runner binary name.'
