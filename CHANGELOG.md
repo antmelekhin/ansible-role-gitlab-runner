@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.0.29...v3.1.0) (2025-11-26)
+
+
+### Features
+
+* add `gitlab_runner_install_from` variable ([#41](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/41)) ([52e3ff7](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/52e3ff7e779bcdb2917cc74ebacfb44b1e0f2b5a))
+
 ## [3.0.29](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.0.28...v3.0.29) (2025-11-25)
 
 
