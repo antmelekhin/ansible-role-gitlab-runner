@@ -1,5 +1,5 @@
 ---
-gitlab_runner_install_origin: 'package'
+gitlab_runner_install_from: 'package'
 
 # Install GitLab Runner from the GitLab repository (Debian and RedHat based distributions)
 gitlab_runner_package_version: ''

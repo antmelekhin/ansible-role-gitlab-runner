@@ -3,4 +3,4 @@
   hosts: all
   roles:
     - role: antmelekhin.gitlab_runner
-      gitlab_runner_install_origin: 'binary'
+      gitlab_runner_install_from: 'binary'

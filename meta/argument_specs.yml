@@ -6,7 +6,7 @@ argument_specs:
       - 'An Ansible role to install L(GitLab Runner,https://docs.gitlab.com/runner/).'
     author: 'Melekhin Anton'
     options:
-      gitlab_runner_install_origin:
+      gitlab_runner_install_from:
         type: 'str'
         description:
           - 'Specify origin for GitLab Runner installation.'
