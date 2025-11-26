@@ -1,0 +1,6 @@
+---
+- name: 'Converge'
+  hosts: all
+  roles:
+    - role: antmelekhin.gitlab_runner
+      gitlab_runner_install_from: 'binary'
