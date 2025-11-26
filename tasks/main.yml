@@ -2,11 +2,11 @@
 - name: 'Install GitLab Runner by using a binary file'
   ansible.builtin.include_tasks: 'binary/install-{{ ansible_system }}.yml'
   when:
-    - gitlab_runner_installation_method == 'binary' or
+    - gitlab_runner_install_origin == 'binary' or
       ansible_system in ['Darwin', 'Win32NT']
 
 - name: 'Install GitLab Runner by using a package'
   ansible.builtin.include_tasks: 'package/install-{{ ansible_os_family }}.yml'
   when:
-    - gitlab_runner_installation_method == 'package' and
+    - gitlab_runner_install_origin == 'package' and
       ansible_os_family in ['Debian', 'RedHat']

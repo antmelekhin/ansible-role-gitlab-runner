@@ -1,5 +1,5 @@
 ---
-gitlab_runner_installation_method: 'binary'
+gitlab_runner_install_origin: 'package'
 
 # Install GitLab Runner from the GitLab repository (Debian and RedHat based distributions)
 gitlab_runner_package_version: ''
