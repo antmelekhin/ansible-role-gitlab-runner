@@ -14,6 +14,15 @@ argument_specs:
           - 'upgrade'
           - 'uninstall'
         default: 'install'
+      gitlab_runner_install_from:
+        type: 'str'
+        description:
+          - 'Specify origin for GitLab Runner installation.'
+          - "'package' option only works for Debian and RedHat based distributions."
+        choices:
+          - 'binary'
+          - 'package'
+        default: 'package'
       gitlab_runner_package_version:
         type: 'str'
         description:
@@ -38,7 +47,7 @@ argument_specs:
       gitlab_runner_binary_version:
         type: 'str'
         description: 'The version of the GitLab Runner binary.'
-        default: '18.3.0'
+        default: '18.6.1'
       gitlab_runner_binary_name:
         type: 'str'
         description: 'The GitLab Runner binary name.'

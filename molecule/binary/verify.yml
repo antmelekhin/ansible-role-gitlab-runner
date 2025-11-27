@@ -1,0 +1,24 @@
+---
+- name: 'Verify'
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: 'Gathering Service Facts'
+      ansible.builtin.service_facts:
+
+    - name: 'Assert that GitLab Runner service is enabled and running'
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.services['gitlab-runner.service'].state == 'running' or
+            ansible_facts.services['gitlab-runner.service'].state == 'active'
+          - ansible_facts.services['gitlab-runner.service'].status == 'enabled'
+
+    - name: 'Check the current GitLab Runner version'
+      ansible.builtin.command:
+        cmd: '/usr/local/bin/gitlab-runner --version'
+      changed_when: false
+      register: __gitlab_runner_version_check
+
+    - name: 'The GitLab Runner version output'
+      ansible.builtin.debug:
+        msg: 'The current GitLab Runner version is {{ __gitlab_runner_version_check.stdout_lines[0].split()[1] }}'
