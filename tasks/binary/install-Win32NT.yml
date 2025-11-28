@@ -19,8 +19,8 @@
 - name: 'Windows | Download and install GitLab Runner'
   when:
     - not __gitlab_runner_binary_is_installed.stat.exists or
-      (__gitlab_runner_binary_version_check.stdout_lines | length and
-      gitlab_runner_binary_version not in __gitlab_runner_binary_version_check.stdout_lines[0].split()[1])
+      ( __gitlab_runner_binary_version_check.stdout_lines | length and
+      gitlab_runner_binary_version not in __gitlab_runner_binary_version_check.stdout_lines[0].split()[1] and 'upgrade' in gitlab_runner_setup )
   block:
     - name: 'Windows | Download the GitLab Runner binary to a local folder'
       become: false
