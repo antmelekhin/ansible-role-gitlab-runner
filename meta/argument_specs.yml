@@ -6,6 +6,18 @@ argument_specs:
       - 'An Ansible role to install L(GitLab Runner,https://docs.gitlab.com/runner/).'
     author: 'Melekhin Anton'
     options:
+      gitlab_runner_setup:
+        type: 'str'
+        description:
+          - 'Specify whether you want to install, upgrade to the latest version, or remove GitLab Runner.'
+          - "Using 'install' will install the latest version of GitLab Runner on a fresh install."
+          - "Using 'upgrade' will upgrade GitLab Runner to the latest version of on every playbook execution."
+          - "Using 'uninstall' will remove GitLab Runner from your system."
+        choices:
+          - 'install'
+          - 'upgrade'
+          - 'uninstall'
+        default: 'install'
       gitlab_runner_install_from:
         type: 'str'
         description:
