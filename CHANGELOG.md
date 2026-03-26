@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.10](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.1.9...v3.1.10) (2026-03-26)
+
+
+### Fixes
+
+* use newer style ansible facts ([65389c6](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/65389c670fbbec1855e75ec11bd7ebb7bb871f16))
+
 ## [3.1.9](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.1.8...v3.1.9) (2026-02-24)
 
 
