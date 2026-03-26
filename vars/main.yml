@@ -8,15 +8,15 @@ __gitlab_runner_repository_gpgkey_url_dict:
     - '{{ gitlab_runner_repository_mirror_url }}/gpgkey/runner-gitlab-runner-4C80FB51394521E9.pub.gpg'
     - '{{ gitlab_runner_repository_mirror_url }}/gpgkey/runner-gitlab-runner-49F16C5CC3A0F81F.pub.gpg'
 
-__gitlab_runner_repository_gpgkey_url: '{{ __gitlab_runner_repository_gpgkey_url_dict[ansible_os_family] | default(omit) }}'
+__gitlab_runner_repository_gpgkey_url: "{{ __gitlab_runner_repository_gpgkey_url_dict[ansible_facts['os_family']] | default(omit) }}"
 __gitlab_runner_repository_gpgkey_keyring: '/usr/share/keyrings/runner_gitlab-runner-archive-keyring.gpg'
 
 # Default GitLab Runner repository
 __gitlab_runner_repository_dict:
-  Debian: 'deb [signed-by={{ __gitlab_runner_repository_gpgkey_keyring }}] {{ gitlab_runner_repository_mirror_url }}/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main'
-  RedHat: "{{ gitlab_runner_repository_mirror_url }}/{{ (ansible_distribution | lower) if ansible_distribution in ['Fedora', 'Amazon'] else 'el' }}/{{ ansible_distribution_major_version }}/$basearch"
+  Debian: "deb [signed-by={{ __gitlab_runner_repository_gpgkey_keyring }}] {{ gitlab_runner_repository_mirror_url }}/{{ ansible_facts['distribution'] | lower }}/ {{ ansible_facts['distribution_release'] }} main"
+  RedHat: "{{ gitlab_runner_repository_mirror_url }}/{{ (ansible_facts['distribution'] | lower) if ansible_facts['distribution'] in ['Fedora', 'Amazon'] else 'el' }}/{{ ansible_facts['distribution_major_version'] }}/$basearch"
 
-__gitlab_runner_repository: '{{ __gitlab_runner_repository_dict[ansible_os_family] | default(omit) }}'
+__gitlab_runner_repository: "{{ __gitlab_runner_repository_dict[ansible_facts['os_family']] | default(omit) }}"
 
 # Install GitLab Runner using the binary file (Linux, MacOSX, Windows)
 __gitlab_runner_binary_os_dict:
@@ -24,7 +24,7 @@ __gitlab_runner_binary_os_dict:
   Linux: 'linux'
   Win32NT: 'windows'
 
-__gitlab_runner_binary_os: '{{ __gitlab_runner_binary_os_dict[ansible_system] | default(omit) }}'
+__gitlab_runner_binary_os: "{{ __gitlab_runner_binary_os_dict[ansible_facts['system']] | default(omit) }}"
 
 __gitlab_runner_binary_architecture_dict:
   Darwin:
@@ -37,11 +37,11 @@ __gitlab_runner_binary_architecture_dict:
     32-bit: '386'
     64-bit: 'amd64'
 
-__gitlab_runner_binary_architecture: '{{ __gitlab_runner_binary_architecture_dict[ansible_system][ansible_architecture | lower] | default(ansible_architecture | lower) }}'
+__gitlab_runner_binary_architecture: "{{ __gitlab_runner_binary_architecture_dict[ansible_facts['system']][ansible_facts['architecture'] | lower] | default(ansible_facts['architecture'] | lower) }}"
 
 __gitlab_runner_binary_install_path_dict:
   Darwin: '/usr/local/bin'
   Linux: '/usr/local/bin'
   Win32NT: 'C:\Program Files\gitlab-runner'
 
-__gitlab_runner_binary_install_path: '{{ __gitlab_runner_binary_install_path_dict[ansible_system] | default(omit) }}'
+__gitlab_runner_binary_install_path: "{{ __gitlab_runner_binary_install_path_dict[ansible_facts['system']] | default(omit) }}"
