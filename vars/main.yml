@@ -18,6 +18,16 @@ __gitlab_runner_repository_dict:
 
 __gitlab_runner_repository: '{{ __gitlab_runner_repository_dict[ansible_os_family] | default(omit) }}'
 
+__gitlab_runner_repository_file_dict:
+  Debian: '/etc/apt/sources.list.d/runner_gitlab-runner.list'
+  RedHat: '/etc/yum.repos.d/runner_gitlab-runner.repo'
+
+__gitlab_runner_repository_file: '{{ __gitlab_runner_repository_file_dict[ansible_os_family] }}'
+
+# GitLab Runner package
+__gitlab_runner_version_separator: "{{ (ansible_pkg_mgr == 'apt') | ternary('=', '-') }}"
+__gitlab_runner_package: "gitlab-runner{{ (__gitlab_runner_version_separator + gitlab_runner_package_version) if (gitlab_runner_package_version | length) else '' }}"
+
 # Install GitLab Runner using the binary file (Linux, MacOSX, Windows)
 __gitlab_runner_binary_os_dict:
   Darwin: 'darwin'
