@@ -10,7 +10,7 @@
         state: 'absent'
       when: ansible_facts['os_family'] == 'Debian'
 
-    - name: 'RedHat | Uninstall the GitLab Runner packages'
+    - name: 'RedHat | Uninstall the GitLab Runner package'
       ansible.builtin.yum:
         name: '{{ __gitlab_runner_package }}'
         autoremove: true
@@ -20,4 +20,20 @@
     - name: 'Remove the GitLab Runner repository'
       ansible.builtin.file:
         path: '{{ __gitlab_runner_repository_file }}'
+        state: 'absent'
+
+    - name: 'Remove a GitLab Runner configuration directory'
+      ansible.builtin.file:
+        dest: '/etc/gitlab-runner'
+        state: 'absent'
+
+    - name: 'Remove a GitLab Runner user'
+      ansible.builtin.user:
+        name: 'gitlab-runner'
+        state: 'absent'
+        remove: true
+
+    - name: 'Remove a GitLab Runner group'
+      ansible.builtin.group:
+        name: 'gitlab-runner'
         state: 'absent'
