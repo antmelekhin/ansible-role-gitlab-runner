@@ -1,4 +1,5 @@
 ---
 collections:
   - name: community.general
+    version: '>=11.4.1,<12.0.0'
   - name: community.windows
