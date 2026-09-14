@@ -27,7 +27,7 @@
       ansible.builtin.get_url:
         url: '{{ gitlab_runner_binary_download_url }}/{{ gitlab_runner_binary_name }}.exe'
         dest: '{{ gitlab_runner_binary_download_path }}/{{ gitlab_runner_binary_name }}-{{ gitlab_runner_binary_version }}.exe'
-        mode: 0644
+        mode: '0644'
       register: __gitlab_runner_binary_download_result
       until: __gitlab_runner_binary_download_result is succeeded
       retries: 3

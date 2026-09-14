@@ -15,7 +15,7 @@
         dest: '{{ __gitlab_runner_repository_file }}'
         owner: 'root'
         group: 'root'
-        mode: 0644
+        mode: '0644'
 
     - name: 'RedHat | Install the GitLab Runner package'
       ansible.builtin.yum:
