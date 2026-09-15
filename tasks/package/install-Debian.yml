@@ -29,8 +29,8 @@
 
     - name: 'Debian | Install the GitLab Runner package'
       ansible.builtin.apt:
-        name: "gitlab-runner{{ ('=' + gitlab_runner_package_version) if (gitlab_runner_package_version | length) else '' }}"
+        name: "gitlab-runner{{ ('=' + gitlab_runner_package_version) if (gitlab_runner_package_version | length > 0) else '' }}"
         allow_downgrade: true
         update_cache: true
-        state: "{{ 'present' if (gitlab_runner_package_version | length) else 'latest' }}"
+        state: "{{ 'present' if (gitlab_runner_package_version | length > 0) else 'latest' }}"
       ignore_errors: '{{ ansible_check_mode }}'
