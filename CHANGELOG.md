@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.1.26](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.1.25...v3.1.26) (2026-09-15)
+
+
+### Fixes
+
+* make conditions work with newer ansible versions ([e0828e2](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/e0828e28d53ec328a6c71a9d32122ac669da92b2))
+
+## [3.1.25](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.1.24...v3.1.25) (2026-09-15)
+
+
+### Fixes
+
+* **version:** gitlab-runner updated to `19.3.2` release ([#74](https://github.com/antmelekhin/ansible-role-gitlab-runner/issues/74)) ([3a11cda](https://github.com/antmelekhin/ansible-role-gitlab-runner/commit/3a11cda19844ca003cac886de8bf49414158c261))
+
 ## [3.1.24](https://github.com/antmelekhin/ansible-role-gitlab-runner/compare/v3.1.23...v3.1.24) (2026-09-01)
 
 
