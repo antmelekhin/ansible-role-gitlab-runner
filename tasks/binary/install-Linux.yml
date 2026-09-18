@@ -2,7 +2,7 @@
 - name: 'Linux | Prepare for installing GitLab Runner'
   become: true
   block:
-    - name: Linux | Create a GitLab Runner group'
+    - name: 'Linux | Create a GitLab Runner group'
       ansible.builtin.group:
         name: 'gitlab-runner'
         system: true
