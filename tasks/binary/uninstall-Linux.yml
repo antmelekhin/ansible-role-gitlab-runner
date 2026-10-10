@@ -1,0 +1,42 @@
+---
+- name: 'Linux | Uninstall GitLab Runner'
+  become: true
+  block:
+    - name: 'Linux | Check if GitLab Runner systemd service is existed'
+      ansible.builtin.stat:
+        path: '/etc/systemd/system/gitlab-runner.service'
+      register: __gitlab_runner_unit_file
+
+    - name: 'Linux | Ensure GitLab Runner is stopped and disabled at boot'
+      ansible.builtin.systemd:
+        name: 'gitlab-runner'
+        state: 'stopped'
+        enabled: false
+      when: __gitlab_runner_unit_file.stat.exists
+
+    - name: 'Linux | Remove GitLab Runner systemd service'
+      ansible.builtin.file:
+        path: '/etc/systemd/system/gitlab-runner.service'
+        state: 'absent'
+      notify: 'Linux | Systemd daemon-reload'
+
+    - name: 'Linux | Remove the GitLab Runner binary'
+      ansible.builtin.file:
+        path: '{{ gitlab_runner_binary_install_path }}/gitlab-runner'
+        state: 'absent'
+
+    - name: 'Linux | Remove a GitLab Runner configuration directory'
+      ansible.builtin.file:
+        path: '/etc/gitlab-runner'
+        state: 'absent'
+
+    - name: 'Linux | Remove a GitLab Runner user'
+      ansible.builtin.user:
+        name: 'gitlab-runner'
+        state: 'absent'
+        remove: true
+
+    - name: 'Linux | Remove a GitLab Runner group'
+      ansible.builtin.group:
+        name: 'gitlab-runner'
+        state: 'absent'

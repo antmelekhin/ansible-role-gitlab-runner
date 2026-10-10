@@ -1,0 +1,27 @@
+---
+- name: 'Darwin | Check if GitLab Runner systemd service is existed'
+  ansible.builtin.stat:
+    path: '{{ ansible_env.HOME }}/Library/LaunchAgents/gitlab-runner.plist'
+  register: __gitlab_runner_unit_file
+
+- name: 'Darwin | Ensure GitLab Runner is stopped and disabled at boot'
+  community.general.launchd:
+    name: 'gitlab-runner'
+    state: 'stopped'
+    enabled: false
+  when: __gitlab_runner_unit_file.stat.exists
+
+- name: 'Darwin | Remove GitLab Runner systemd service'
+  ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/Library/LaunchAgents/gitlab-runner.plist'
+    state: 'absent'
+
+- name: 'Darwin | Remove the GitLab Runner binary'
+  ansible.builtin.file:
+    path: '{{ gitlab_runner_binary_install_path }}/gitlab-runner'
+    state: 'absent'
+
+- name: 'Darwin | Remove a GitLab Runner configuration directory'
+  ansible.builtin.file:
+    path: '/Users/{{ ansible_user_id }}/.gitlab-runner'
+    state: 'absent'
