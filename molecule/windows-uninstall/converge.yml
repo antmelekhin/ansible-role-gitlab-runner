@@ -1,0 +1,9 @@
+---
+- name: 'Converge'
+  hosts: all
+  tasks:
+    - name: 'Debug'
+      ansible.builtin.debug:
+        msg: 'Hi'
+  # roles:
+  #   - role: antmelekhin.gitlab_runner

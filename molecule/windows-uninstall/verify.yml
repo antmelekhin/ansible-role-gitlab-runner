@@ -1,0 +1,24 @@
+# ---
+# - name: 'Verify'
+#   hosts: all
+#   gather_facts: false
+
+#   tasks:
+#     - name: 'Check if GitLab Runner service is installed'
+#       ansible.windows.win_service:
+#         name: 'gitlab-runner'
+#       register: __gitlab_runner_service
+
+#     - name: 'Assert that GitLab Runner service is enabled and running'
+#       ansible.builtin.assert:
+#         that: "'running' in __gitlab_runner_service.state"
+
+#     - name: 'Check the current GitLab Runner version'
+#       ansible.windows.win_command:
+#         cmd: '"C:\Program Files\gitlab-runner\gitlab-runner.exe" --version'
+#       changed_when: false
+#       register: __gitlab_runner_version_check
+
+#     - name: 'The GitLab Runner version output'
+#       ansible.builtin.debug:
+#         msg: 'The current GitLab Runner version is {{ __gitlab_runner_version_check.stdout_lines[0].split()[1] }}'

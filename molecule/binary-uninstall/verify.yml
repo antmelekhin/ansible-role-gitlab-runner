@@ -1,0 +1,12 @@
+---
+- name: 'Verify'
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: 'Check if GitLab Runner is installed'
+      ansible.builtin.package:
+        name: 'gitlab-runner'
+        state: 'absent'
+      register: __gitlab_runner_is_installed
+      failed_when: __gitlab_runner_is_installed is changed
+      check_mode: true
